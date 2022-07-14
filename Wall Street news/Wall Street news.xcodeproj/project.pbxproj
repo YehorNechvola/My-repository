@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		74FA969A288055770065F7EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA9699288055770065F7EB /* AppDelegate.swift */; };
 		74FA969C288055770065F7EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA969B288055770065F7EB /* SceneDelegate.swift */; };
-		74FA969E288055770065F7EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA969D288055770065F7EB /* ViewController.swift */; };
 		74FA96A1288055770065F7EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FA969F288055770065F7EB /* Main.storyboard */; };
 		74FA96A32880557C0065F7EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74FA96A22880557C0065F7EB /* Assets.xcassets */; };
 		74FA96A62880557C0065F7EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FA96A42880557C0065F7EB /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		74FA9696288055770065F7EB /* Wall Street news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wall Street news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FA9699288055770065F7EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74FA969B288055770065F7EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		74FA969D288055770065F7EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		74FA96A0288055770065F7EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74FA96A22880557C0065F7EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74FA96A52880557C0065F7EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +35,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		746FC0ED28806ED9005F49B6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				74FA9699288055770065F7EB /* AppDelegate.swift */,
+				74FA969B288055770065F7EB /* SceneDelegate.swift */,
+				74FA96A72880557C0065F7EB /* Info.plist */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		746FC0EE28806F74005F49B6 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				74FA96A22880557C0065F7EB /* Assets.xcassets */,
+				74FA96A42880557C0065F7EB /* LaunchScreen.storyboard */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		74FA968D288055770065F7EB = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +73,9 @@
 		74FA9698288055770065F7EB /* Wall Street news */ = {
 			isa = PBXGroup;
 			children = (
-				74FA9699288055770065F7EB /* AppDelegate.swift */,
-				74FA969B288055770065F7EB /* SceneDelegate.swift */,
-				74FA969D288055770065F7EB /* ViewController.swift */,
+				746FC0EE28806F74005F49B6 /* Resourses */,
+				746FC0ED28806ED9005F49B6 /* Base */,
 				74FA969F288055770065F7EB /* Main.storyboard */,
-				74FA96A22880557C0065F7EB /* Assets.xcassets */,
-				74FA96A42880557C0065F7EB /* LaunchScreen.storyboard */,
-				74FA96A72880557C0065F7EB /* Info.plist */,
 			);
 			path = "Wall Street news";
 			sourceTree = "<group>";
@@ -138,7 +151,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74FA969E288055770065F7EB /* ViewController.swift in Sources */,
 				74FA969A288055770065F7EB /* AppDelegate.swift in Sources */,
 				74FA969C288055770065F7EB /* SceneDelegate.swift in Sources */,
 			);
@@ -289,7 +301,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LM9H2W5L8R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Wall Street news/Info.plist";
+				INFOPLIST_FILE = "Wall Street news/Base/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,7 +330,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LM9H2W5L8R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Wall Street news/Info.plist";
+				INFOPLIST_FILE = "Wall Street news/Base/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
