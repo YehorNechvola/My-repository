@@ -19,6 +19,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet private weak var articleImageView: UIImageView!
     @IBOutlet private weak var titleArticleLabel: UILabel!
     @IBOutlet private weak var dateOfArticleLabel: UILabel!
+    @IBOutlet private weak var authorLabel: UILabel!
     
     // MARK: - life cycle
     
@@ -33,9 +34,10 @@ class ArticleTableViewCell: UITableViewCell {
     
     // MARK: - Methods
     
-    func setup(title: String, and date: String) {
+    func setup(title: String, and date: String, with author: String) {
         titleArticleLabel.text = title
-        dateOfArticleLabel.text = date
+        dateOfArticleLabel.text = date.format()
+        authorLabel.text = author
     }
     
     func setup(image: UIImage) {

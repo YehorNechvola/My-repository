@@ -12,7 +12,8 @@ class JournalViewController: UIViewController {
     // MARK: - Properties
     
     var presenter: JournalViewPresenterProtocol!
-
+    let activityIndicator = UIActivityIndicatorView()
+    
     // MARK: - Outlets
     
     @IBOutlet private weak var journalTableView: UITableView!
@@ -21,10 +22,13 @@ class JournalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Articles"
+        
+        setupActivityIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        title = "Articles"
         setupTableView()
     }
     
@@ -34,7 +38,12 @@ class JournalViewController: UIViewController {
         journalTableView.delegate = self
         journalTableView.dataSource = self
         journalTableView.register(ArticleTableViewCell.nib, forCellReuseIdentifier: ArticleTableViewCell.identifier)
-        journalTableView.backgroundColor = .lightGray
+    }
+    
+    private func setupActivityIndicator() {
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
     }
 }
 
@@ -60,10 +69,21 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
         
-        cell.setup(title: article?.title ?? "nil", and: article?.publishedAt ?? "nil")
+        cell.setup(title: article?.title ?? "-", and: article?.publishedAt ?? "-", with: article?.author ?? "-")
         cell.setup(image: image)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let journal = presenter.journal else { return }
+        guard let article = journal.articles?[indexPath.row] else { return }
+        let image = presenter.images[indexPath.row]
+        let articleVC = ModuleBuilder.createArticleModule(article: article)
+        articleVC.presenter.article = article
+        articleVC.presenter.imageArticle = image
+        navigationController?.pushViewController(articleVC, animated: true)
     }
 }
 
@@ -72,6 +92,8 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
 extension JournalViewController: JournalViewProtocol {
     
     func succes() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
         journalTableView.reloadData()
     }
     
