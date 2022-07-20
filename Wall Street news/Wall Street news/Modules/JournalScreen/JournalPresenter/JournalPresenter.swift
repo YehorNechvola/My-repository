@@ -13,7 +13,8 @@ protocol JournalViewProtocol: AnyObject {
 }
 
 protocol JournalViewPresenterProtocol: AnyObject {
-    init(view: JournalViewProtocol, networkService: NetworkServiceProtocol)
+    init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol)
+    var router: RouterProtocol? { get set }
     var journal: Journal? { get set }
     var images: [UIImage] { get set }
 }
@@ -21,12 +22,14 @@ protocol JournalViewPresenterProtocol: AnyObject {
 class JournalViewPresenter: JournalViewPresenterProtocol {
    
     weak var view: JournalViewProtocol?
+    var router: RouterProtocol?
     private var networkService: NetworkServiceProtocol!
     var journal: Journal?
     var images: [UIImage] = []
     
-    required init(view: JournalViewProtocol, networkService: NetworkServiceProtocol) {
+    required init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol) {
         self.view = view
+        self.router = router
         self.networkService = networkService
         getJournal()
     }

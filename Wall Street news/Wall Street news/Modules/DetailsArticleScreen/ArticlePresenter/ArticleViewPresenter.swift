@@ -12,7 +12,7 @@ protocol ArticleViewProtocol: AnyObject {
 }
 
 protocol ArticleViewPresenterProtocol: AnyObject {
-    init(view: ArticleViewProtocol, article: Article)
+    init(view: ArticleViewProtocol, router: RouterProtocol, article: Article, with image: UIImage)
     var article: Article? { get set }
     var imageArticle: UIImage? { get set }
     func setArticle()
@@ -21,13 +21,15 @@ protocol ArticleViewPresenterProtocol: AnyObject {
 class ArticleViewPresenter: ArticleViewPresenterProtocol {
  
     weak var view: ArticleViewProtocol?
+    var router: RouterProtocol?
     var article: Article?
     var imageArticle: UIImage?
     
-    required init(view: ArticleViewProtocol, article: Article) {
+    required init(view: ArticleViewProtocol, router: RouterProtocol, article: Article, with image: UIImage) {
         self.view = view
+        self.router = router
         self.article = article
-        
+        self.imageArticle = image
     }
     
     public func setArticle() {

@@ -80,10 +80,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         guard let journal = presenter.journal else { return }
         guard let article = journal.articles?[indexPath.row] else { return }
         let image = presenter.images[indexPath.row]
-        let articleVC = ModuleBuilder.createArticleModule(article: article)
-        articleVC.presenter.article = article
-        articleVC.presenter.imageArticle = image
-        navigationController?.pushViewController(articleVC, animated: true)
+        presenter.router?.showArticleViewCOntroller(article: article, with: image)
     }
 }
 
