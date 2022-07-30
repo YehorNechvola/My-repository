@@ -23,7 +23,7 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
    
     weak var view: JournalViewProtocol?
     var router: RouterProtocol?
-    private var networkService: NetworkServiceProtocol!
+    private var networkService: NetworkServiceProtocol
     var journal: Journal?
     var images: [UIImage] = []
     

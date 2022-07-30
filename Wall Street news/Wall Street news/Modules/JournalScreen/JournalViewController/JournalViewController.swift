@@ -69,7 +69,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
         
-        cell.setup(title: article?.title ?? "-", and: article?.publishedAt ?? "-", with: article?.author ?? "-")
+        cell.setup(title: article?.title ?? "", and: article?.publishedAt ?? "", with: article?.author ?? "")
         cell.setup(image: image)
         
         return cell

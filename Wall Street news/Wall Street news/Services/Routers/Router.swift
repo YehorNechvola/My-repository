@@ -8,34 +8,46 @@
 import UIKit
 
 protocol RouterMainProtocol: AnyObject {
-    var navigationController: UINavigationController? { get set }
+    var firstNavigationController: UINavigationController? { get set }
+    var secondNavigationController: UINavigationController? { get set }
     var assemblyBuilder: AssemblyBuilderProtocol? { get set }
 }
 
 protocol RouterProtocol: RouterMainProtocol {
     func initialJournalViewController()
     func showArticleViewCOntroller(article: Article, with image: UIImage)
+    func initialSavedArticlesViewController()
 }
 
 class Router: RouterProtocol {
-    var navigationController: UINavigationController?
+    
+    var firstNavigationController: UINavigationController?
+    var secondNavigationController: UINavigationController?
     var assemblyBuilder: AssemblyBuilderProtocol?
     
-    init(navigationController: UINavigationController, assemblyBuilder: AssemblyBuilderProtocol) {
-        self.navigationController = navigationController
+    init(navigationControllers: [UINavigationController], assemblyBuilder: AssemblyBuilderProtocol) {
+        firstNavigationController = navigationControllers[0]
+        secondNavigationController = navigationControllers[1]
+        firstNavigationController?.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 0)
+        secondNavigationController?.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         self.assemblyBuilder = assemblyBuilder
     }
     
     func initialJournalViewController() {
         if let journalViewController = assemblyBuilder?.createJournalModule(router: self) {
-            navigationController?.viewControllers = [journalViewController]
+            firstNavigationController?.viewControllers = [journalViewController]
         }
     }
     
     func showArticleViewCOntroller(article: Article, with image: UIImage) {
         if let articleViewController = assemblyBuilder?.createArticleModule(router: self, article: article, with: image) {
-            print(article)
-            navigationController?.pushViewController(articleViewController, animated: true)
+            firstNavigationController?.pushViewController(articleViewController, animated: true)
+        }
+    }
+    
+    func initialSavedArticlesViewController() {
+        if let savedArticlesViewController = assemblyBuilder?.createSavedArticleModule(router: self) {
+            secondNavigationController?.viewControllers = [savedArticlesViewController]
         }
     }
 }

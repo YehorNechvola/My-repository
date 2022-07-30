@@ -10,6 +10,7 @@ import UIKit
 protocol AssemblyBuilderProtocol: AnyObject {
     func createJournalModule(router: RouterProtocol) -> JournalViewController
     func createArticleModule(router: RouterProtocol, article: Article, with image: UIImage) -> ArticleViewController
+    func createSavedArticleModule(router: RouterProtocol) -> SavedArticlesUIViewController
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
@@ -25,6 +26,13 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
     func createArticleModule(router: RouterProtocol, article: Article, with image: UIImage) -> ArticleViewController {
         let view = ArticleViewController()
         let presenter = ArticleViewPresenter(view: view, router: router, article: article, with: image)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createSavedArticleModule(router: RouterProtocol) -> SavedArticlesUIViewController {
+        let view = SavedArticlesUIViewController()
+        let presenter = SavedArticlesPresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }
