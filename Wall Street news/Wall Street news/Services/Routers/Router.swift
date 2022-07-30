@@ -15,8 +15,9 @@ protocol RouterMainProtocol: AnyObject {
 
 protocol RouterProtocol: RouterMainProtocol {
     func initialJournalViewController()
-    func showArticleViewCOntroller(article: Article, with image: UIImage)
+    func showArticleViewController(article: Article, with image: UIImage)
     func initialSavedArticlesViewController()
+    func showFullArticleViewController(by urlToArticle: String)
 }
 
 class Router: RouterProtocol {
@@ -39,7 +40,7 @@ class Router: RouterProtocol {
         }
     }
     
-    func showArticleViewCOntroller(article: Article, with image: UIImage) {
+    func showArticleViewController(article: Article, with image: UIImage) {
         if let articleViewController = assemblyBuilder?.createArticleModule(router: self, article: article, with: image) {
             firstNavigationController?.pushViewController(articleViewController, animated: true)
         }
@@ -48,6 +49,13 @@ class Router: RouterProtocol {
     func initialSavedArticlesViewController() {
         if let savedArticlesViewController = assemblyBuilder?.createSavedArticleModule(router: self) {
             secondNavigationController?.viewControllers = [savedArticlesViewController]
+        }
+    }
+    
+    func showFullArticleViewController(by urlToArticle: String) {
+        
+        if let fullArticleViewController = assemblyBuilder?.createFullArticleModule(router: self, urlToArticle: urlToArticle) {
+            firstNavigationController?.pushViewController(fullArticleViewController, animated: true)
         }
     }
 }

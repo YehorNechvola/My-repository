@@ -13,6 +13,7 @@ protocol ArticleViewProtocol: AnyObject {
 
 protocol ArticleViewPresenterProtocol: AnyObject {
     init(view: ArticleViewProtocol, router: RouterProtocol, article: Article, with image: UIImage)
+    var router: RouterProtocol? { get set }
     var article: Article? { get set }
     var imageArticle: UIImage? { get set }
     func setArticle()
