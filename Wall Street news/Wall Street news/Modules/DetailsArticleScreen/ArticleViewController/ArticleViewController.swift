@@ -18,7 +18,6 @@ class ArticleViewController: UIViewController {
     @IBOutlet private weak var articleImageView: UIImageView!
     @IBOutlet private weak var titleAtricleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var authorLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
@@ -36,9 +35,14 @@ class ArticleViewController: UIViewController {
     private func setupLabels() {
         titleAtricleLabel.sizeToFit()
         descriptionLabel.sizeToFit()
-        contentLabel.sizeToFit()
         authorLabel.sizeToFit()
         dateLabel.sizeToFit()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction private func readFullArticlePressed(_ sender: UIButton) {
+        
     }
 }
 
@@ -50,9 +54,7 @@ extension ArticleViewController: ArticleViewProtocol {
         titleAtricleLabel.text = article.title
         articleImageView.image = image
         descriptionLabel.text = article.description
-        contentLabel.text = article.content
         authorLabel.text = article.author
-        
         guard let date = article.publishedAt?.format() else { return }
         dateLabel.text = date
     }

@@ -12,7 +12,6 @@
             <connections>
                 <outlet property="articleImageView" destination="S2w-Km-che" id="Kgl-Xk-Loj"/>
                 <outlet property="authorLabel" destination="w8J-N4-gn6" id="czY-Nk-eWw"/>
-                <outlet property="contentLabel" destination="OzG-LQ-pqe" id="8CV-m6-Mg4"/>
                 <outlet property="dateLabel" destination="BF6-s4-9qr" id="cJ0-8A-KAe"/>
                 <outlet property="descriptionLabel" destination="TKA-fF-VTL" id="Pxs-bS-kDn"/>
                 <outlet property="titleAtricleLabel" destination="bHl-Ry-aa7" id="HBa-hb-ysC"/>
@@ -42,44 +41,51 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzG-LQ-pqe">
-                    <rect key="frame" x="5" y="395" width="404" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8J-N4-gn6">
-                    <rect key="frame" x="20" y="445.5" width="51.5" height="21"/>
+                    <rect key="frame" x="20" y="446" width="51.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BF6-s4-9qr">
-                    <rect key="frame" x="358" y="445.5" width="36" height="21"/>
+                    <rect key="frame" x="358" y="446" width="36" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUf-Y0-rKV">
+                    <rect key="frame" x="120" y="390" width="174" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="K12-a6-cAP"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="read completely " buttonSize="mini" titleAlignment="leading">
+                        <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="readFullArticlePressed:" destination="-1" eventType="touchUpInside" id="c7M-p9-KKE"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TKA-fF-VTL" secondAttribute="trailing" constant="5" id="349-7W-c8C"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="S2w-Km-che" secondAttribute="trailing" constant="5" id="AHE-E6-dmj"/>
+                <constraint firstItem="sUf-Y0-rKV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="120" id="AYi-Ql-cJx"/>
                 <constraint firstItem="S2w-Km-che" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Cdi-8Z-AmF"/>
-                <constraint firstItem="OzG-LQ-pqe" firstAttribute="top" secondItem="TKA-fF-VTL" secondAttribute="bottom" constant="20" id="FWM-WB-6M8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sUf-Y0-rKV" secondAttribute="trailing" constant="120" id="HaH-VW-Vr6"/>
                 <constraint firstItem="TKA-fF-VTL" firstAttribute="top" secondItem="bHl-Ry-aa7" secondAttribute="bottom" constant="30" id="Kf4-n0-dEA"/>
                 <constraint firstItem="TKA-fF-VTL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="L2a-kG-pk1"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OzG-LQ-pqe" secondAttribute="trailing" constant="5" id="OMu-T5-YEh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bHl-Ry-aa7" secondAttribute="trailing" constant="5" id="VU0-g4-8ao"/>
-                <constraint firstItem="BF6-s4-9qr" firstAttribute="top" secondItem="OzG-LQ-pqe" secondAttribute="bottom" constant="30" id="Wcu-zC-tKM"/>
-                <constraint firstItem="w8J-N4-gn6" firstAttribute="top" secondItem="OzG-LQ-pqe" secondAttribute="bottom" constant="30" id="XTf-ai-X6t"/>
+                <constraint firstItem="w8J-N4-gn6" firstAttribute="top" secondItem="TKA-fF-VTL" secondAttribute="bottom" constant="71" id="WDB-qo-Hhj"/>
+                <constraint firstItem="BF6-s4-9qr" firstAttribute="top" secondItem="TKA-fF-VTL" secondAttribute="bottom" constant="71" id="a44-41-AI4"/>
                 <constraint firstItem="w8J-N4-gn6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="aIm-y7-SkG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BF6-s4-9qr" secondAttribute="trailing" constant="20" id="mCu-5S-BAP"/>
                 <constraint firstItem="bHl-Ry-aa7" firstAttribute="top" secondItem="S2w-Km-che" secondAttribute="bottom" constant="10" id="qxl-MO-ixS"/>
+                <constraint firstItem="sUf-Y0-rKV" firstAttribute="top" secondItem="TKA-fF-VTL" secondAttribute="bottom" constant="15" id="ra8-VK-f4h"/>
                 <constraint firstItem="S2w-Km-che" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="spu-lY-z2y"/>
                 <constraint firstItem="bHl-Ry-aa7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="xrg-in-hXy"/>
-                <constraint firstItem="OzG-LQ-pqe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="zTj-xc-loV"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="65.625"/>
         </view>
@@ -87,6 +93,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
