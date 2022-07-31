@@ -15,6 +15,7 @@
 		742C42DB28808710001C4FDA /* JournalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42DA2880870F001C4FDA /* JournalPresenter.swift */; };
 		742C42DE28808889001C4FDA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42DD28808889001C4FDA /* NetworkService.swift */; };
 		742C42E12880921F001C4FDA /* URLAdresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42E02880921F001C4FDA /* URLAdresses.swift */; };
+		742FC94A2896BFBF00E673C1 /* DataStoreManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 742FC9482896BFBF00E673C1 /* DataStoreManager.xcdatamodeld */; };
 		746EDF7B2887EF84001CCA00 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746EDF7A2887EF84001CCA00 /* Router.swift */; };
 		74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74872E672881586F00D07ECB /* AssemblyBuilder.swift */; };
 		74CED4F72885AFD400907717 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CED4F62885AFD400907717 /* String+Extension.swift */; };
@@ -44,6 +45,7 @@
 		742C42DA2880870F001C4FDA /* JournalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPresenter.swift; sourceTree = "<group>"; };
 		742C42DD28808889001C4FDA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		742C42E02880921F001C4FDA /* URLAdresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLAdresses.swift; sourceTree = "<group>"; };
+		742FC9492896BFBF00E673C1 /* DataStoreManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStoreManager.xcdatamodel; sourceTree = "<group>"; };
 		746EDF7A2887EF84001CCA00 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		74872E672881586F00D07ECB /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		74CED4F62885AFD400907717 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		742C42DC2880876E001C4FDA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				742FC9472896BF9000E673C1 /* DataStoreManager */,
 				746EDF792887EF3D001CCA00 /* Routers */,
 				74CED4F52885AFA200907717 /* ExtensionsHelpers */,
 				74872E662881584F00D07ECB /* AssemblyBuilder */,
@@ -150,6 +153,14 @@
 				742C42E02880921F001C4FDA /* URLAdresses.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		742FC9472896BF9000E673C1 /* DataStoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				742FC9482896BFBF00E673C1 /* DataStoreManager.xcdatamodeld */,
+			);
+			path = DataStoreManager;
 			sourceTree = "<group>";
 		};
 		746EDF792887EF3D001CCA00 /* Routers */ = {
@@ -393,6 +404,7 @@
 				74CF50DF2895377E0025EAE8 /* SavedArticlesPresenter.swift in Sources */,
 				746EDF7B2887EF84001CCA00 /* Router.swift in Sources */,
 				74FA969A288055770065F7EB /* AppDelegate.swift in Sources */,
+				742FC94A2896BFBF00E673C1 /* DataStoreManager.xcdatamodeld in Sources */,
 				74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */,
 				74FA969C288055770065F7EB /* SceneDelegate.swift in Sources */,
 				742C42CD28807D86001C4FDA /* Article.swift in Sources */,
@@ -616,6 +628,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		742FC9482896BFBF00E673C1 /* DataStoreManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				742FC9492896BFBF00E673C1 /* DataStoreManager.xcdatamodel */,
+			);
+			currentVersion = 742FC9492896BFBF00E673C1 /* DataStoreManager.xcdatamodel */;
+			path = DataStoreManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 74FA968E288055770065F7EB /* Project object */;
 }
