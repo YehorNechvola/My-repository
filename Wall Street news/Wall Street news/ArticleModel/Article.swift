@@ -9,23 +9,18 @@ import Foundation
 
 struct Journal: Codable {
     
-    var status: String?
-    var totalResults: Int?
     var articles: [Article]?
 }
 
 struct Article: Codable {
     
-    var source: Source?
     var author: String?
     var title, description: String?
     var url: String
     var urlToImage: String
     var publishedAt: String?
-    var content: String?
+
 }
 
-struct Source: Codable {
-    var id, name: String?
-}
+
 
