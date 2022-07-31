@@ -69,6 +69,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
         
+        cell.delegate = self
         cell.setup(title: article?.title ?? "", and: article?.publishedAt ?? "", with: article?.author ?? "")
         cell.setup(image: image)
         
@@ -98,3 +99,13 @@ extension JournalViewController: JournalViewProtocol {
         print(error)
     }
 }
+
+// MARK: - ArticleTableViewCellProtocol
+
+extension JournalViewController: ArticleTableViewCellProtocol {
+    func saveArticle() {
+        print("needs code")
+    }
+}
+
+

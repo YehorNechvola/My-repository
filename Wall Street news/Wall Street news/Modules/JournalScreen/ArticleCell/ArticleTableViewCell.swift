@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol ArticleTableViewCellProtocol: AnyObject {
+    
+    func saveArticle()
+}
+
 class ArticleTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
     static let nib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
     static let identifier = "ArticleTableViewCell"
+    var delegate: JournalViewController?
     
     // MARK: - Outlets
     
@@ -20,16 +26,19 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleArticleLabel: UILabel!
     @IBOutlet private weak var dateOfArticleLabel: UILabel!
     @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - life cycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         titleArticleLabel.sizeToFit()
+        selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        delegate?.saveArticle()
     }
     
     // MARK: - Methods

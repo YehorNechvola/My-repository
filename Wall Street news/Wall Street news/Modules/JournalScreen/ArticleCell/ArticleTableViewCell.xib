@@ -44,16 +44,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNr-NA-xWy">
+                        <rect key="frame" x="150" y="167" width="68" height="31"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="save"/>
+                        <connections>
+                            <action selector="saveButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ndV-Ny-vwC"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="spi-o5-dNE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="13t-oc-6Ts"/>
                     <constraint firstAttribute="trailing" secondItem="Zqt-Wf-Pok" secondAttribute="trailing" constant="20" id="1HN-Vk-d7i"/>
+                    <constraint firstItem="rNr-NA-xWy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="130" id="8CZ-RT-k1K"/>
                     <constraint firstItem="FP0-Ux-Nqk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="A8m-k0-jH9"/>
                     <constraint firstAttribute="trailing" secondItem="FP0-Ux-Nqk" secondAttribute="trailing" constant="5" id="Ebj-Gv-Uzi"/>
                     <constraint firstItem="aMe-FR-6Ho" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Rf3-8v-HMH"/>
                     <constraint firstItem="aMe-FR-6Ho" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Yem-Nn-oRD"/>
                     <constraint firstItem="FP0-Ux-Nqk" firstAttribute="leading" secondItem="aMe-FR-6Ho" secondAttribute="trailing" constant="5" id="bBr-Ab-UyT"/>
+                    <constraint firstItem="rNr-NA-xWy" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="5" id="bMF-kn-vLR"/>
                     <constraint firstItem="Zqt-Wf-Pok" firstAttribute="top" secondItem="aMe-FR-6Ho" secondAttribute="bottom" constant="15" id="fGs-i3-0Vv"/>
+                    <constraint firstItem="rNr-NA-xWy" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="gJb-SB-TrR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="rNr-NA-xWy" secondAttribute="trailing" constant="130" id="nN5-Bg-eCe"/>
                     <constraint firstItem="spi-o5-dNE" firstAttribute="top" secondItem="aMe-FR-6Ho" secondAttribute="bottom" constant="15" id="tDd-ou-SiD"/>
                 </constraints>
             </tableViewCellContentView>
@@ -62,9 +74,10 @@
                 <outlet property="articleImageView" destination="aMe-FR-6Ho" id="9ar-Mu-dpU"/>
                 <outlet property="authorLabel" destination="spi-o5-dNE" id="v9u-86-FDT"/>
                 <outlet property="dateOfArticleLabel" destination="Zqt-Wf-Pok" id="bJ2-mZ-bAU"/>
+                <outlet property="saveButton" destination="rNr-NA-xWy" id="Jkt-4S-VB0"/>
                 <outlet property="titleArticleLabel" destination="FP0-Ux-Nqk" id="RAv-LZ-1iI"/>
             </connections>
-            <point key="canvasLocation" x="13" y="25"/>
+            <point key="canvasLocation" x="11.594202898550726" y="24.776785714285712"/>
         </tableViewCell>
     </objects>
 </document>
