@@ -15,7 +15,10 @@
 		742C42DB28808710001C4FDA /* JournalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42DA2880870F001C4FDA /* JournalPresenter.swift */; };
 		742C42DE28808889001C4FDA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42DD28808889001C4FDA /* NetworkService.swift */; };
 		742C42E12880921F001C4FDA /* URLAdresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42E02880921F001C4FDA /* URLAdresses.swift */; };
-		742FC94A2896BFBF00E673C1 /* DataStoreManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 742FC9482896BFBF00E673C1 /* DataStoreManager.xcdatamodeld */; };
+		742FC95E2896CFD800E673C1 /* CoreDataEntity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 742FC95C2896CFD800E673C1 /* CoreDataEntity.xcdatamodeld */; };
+		742FC9612896D06600E673C1 /* ArticleCoreDataEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742FC95F2896D06600E673C1 /* ArticleCoreDataEntity+CoreDataClass.swift */; };
+		742FC9622896D06600E673C1 /* ArticleCoreDataEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742FC9602896D06600E673C1 /* ArticleCoreDataEntity+CoreDataProperties.swift */; };
+		742FC9652896D12A00E673C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742FC9642896D12A00E673C1 /* CoreDataManager.swift */; };
 		746EDF7B2887EF84001CCA00 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746EDF7A2887EF84001CCA00 /* Router.swift */; };
 		74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74872E672881586F00D07ECB /* AssemblyBuilder.swift */; };
 		74CED4F72885AFD400907717 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CED4F62885AFD400907717 /* String+Extension.swift */; };
@@ -45,7 +48,10 @@
 		742C42DA2880870F001C4FDA /* JournalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPresenter.swift; sourceTree = "<group>"; };
 		742C42DD28808889001C4FDA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		742C42E02880921F001C4FDA /* URLAdresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLAdresses.swift; sourceTree = "<group>"; };
-		742FC9492896BFBF00E673C1 /* DataStoreManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStoreManager.xcdatamodel; sourceTree = "<group>"; };
+		742FC95D2896CFD800E673C1 /* CoreDataEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataEntity.xcdatamodel; sourceTree = "<group>"; };
+		742FC95F2896D06600E673C1 /* ArticleCoreDataEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleCoreDataEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		742FC9602896D06600E673C1 /* ArticleCoreDataEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleCoreDataEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		742FC9642896D12A00E673C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		746EDF7A2887EF84001CCA00 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		74872E672881586F00D07ECB /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		74CED4F62885AFD400907717 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -158,9 +164,20 @@
 		742FC9472896BF9000E673C1 /* DataStoreManager */ = {
 			isa = PBXGroup;
 			children = (
-				742FC9482896BFBF00E673C1 /* DataStoreManager.xcdatamodeld */,
+				742FC9632896D07900E673C1 /* CoreDataModel */,
+				742FC9642896D12A00E673C1 /* CoreDataManager.swift */,
 			);
 			path = DataStoreManager;
+			sourceTree = "<group>";
+		};
+		742FC9632896D07900E673C1 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				742FC95F2896D06600E673C1 /* ArticleCoreDataEntity+CoreDataClass.swift */,
+				742FC9602896D06600E673C1 /* ArticleCoreDataEntity+CoreDataProperties.swift */,
+				742FC95C2896CFD800E673C1 /* CoreDataEntity.xcdatamodeld */,
+			);
+			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		746EDF792887EF3D001CCA00 /* Routers */ = {
@@ -390,21 +407,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742FC9622896D06600E673C1 /* ArticleCoreDataEntity+CoreDataProperties.swift in Sources */,
 				74CF50DC2895351E0025EAE8 /* SavedArticlesUIViewController.swift in Sources */,
 				742C42DB28808710001C4FDA /* JournalPresenter.swift in Sources */,
 				742C42D7288081DF001C4FDA /* ArticleTableViewCell.swift in Sources */,
 				742C42D228807F8D001C4FDA /* JournalViewController.swift in Sources */,
+				742FC9612896D06600E673C1 /* ArticleCoreDataEntity+CoreDataClass.swift in Sources */,
 				74CF50D6289533E00025EAE8 /* SceneDelegate+Extension.swift in Sources */,
 				74DF6FBE28844BA000C5627A /* ArticleViewPresenter.swift in Sources */,
 				74CF50E5289558460025EAE8 /* FullArticleViewController.swift in Sources */,
 				74CED4F72885AFD400907717 /* String+Extension.swift in Sources */,
+				742FC9652896D12A00E673C1 /* CoreDataManager.swift in Sources */,
 				742C42E12880921F001C4FDA /* URLAdresses.swift in Sources */,
 				74DF6FC2288450B100C5627A /* ArticleViewController.swift in Sources */,
+				742FC95E2896CFD800E673C1 /* CoreDataEntity.xcdatamodeld in Sources */,
 				74CF50E82895594A0025EAE8 /* FullArticlePresenter.swift in Sources */,
 				74CF50DF2895377E0025EAE8 /* SavedArticlesPresenter.swift in Sources */,
 				746EDF7B2887EF84001CCA00 /* Router.swift in Sources */,
 				74FA969A288055770065F7EB /* AppDelegate.swift in Sources */,
-				742FC94A2896BFBF00E673C1 /* DataStoreManager.xcdatamodeld in Sources */,
 				74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */,
 				74FA969C288055770065F7EB /* SceneDelegate.swift in Sources */,
 				742C42CD28807D86001C4FDA /* Article.swift in Sources */,
@@ -630,13 +650,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		742FC9482896BFBF00E673C1 /* DataStoreManager.xcdatamodeld */ = {
+		742FC95C2896CFD800E673C1 /* CoreDataEntity.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				742FC9492896BFBF00E673C1 /* DataStoreManager.xcdatamodel */,
+				742FC95D2896CFD800E673C1 /* CoreDataEntity.xcdatamodel */,
 			);
-			currentVersion = 742FC9492896BFBF00E673C1 /* DataStoreManager.xcdatamodel */;
-			path = DataStoreManager.xcdatamodeld;
+			currentVersion = 742FC95D2896CFD800E673C1 /* CoreDataEntity.xcdatamodel */;
+			path = CoreDataEntity.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

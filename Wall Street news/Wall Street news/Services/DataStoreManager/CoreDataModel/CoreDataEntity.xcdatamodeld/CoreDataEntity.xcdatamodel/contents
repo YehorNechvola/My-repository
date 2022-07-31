@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ArticleEntity" representedClassName=".ArticleCoreDataModel" syncable="YES" codeGenerationType="category">
+    <entity name="ArticleCoreDataEntity" representedClassName=".ArticleCoreDataEntity" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String"/>
-        <attribute name="descriptionOfArticle" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="publishedAt" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="urlToArticle" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ArticleEntity" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="ArticleCoreDataEntity" positionX="-54" positionY="-9" width="128" height="119"/>
     </elements>
 </model>
