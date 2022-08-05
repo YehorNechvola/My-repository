@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum NavigationControllers {
+    case first
+    case second
+}
+
 protocol RouterMainProtocol: AnyObject {
     var firstNavigationController: UINavigationController? { get set }
     var secondNavigationController: UINavigationController? { get set }
@@ -21,6 +26,8 @@ protocol RouterProtocol: RouterMainProtocol {
 }
 
 class Router: RouterProtocol {
+    
+    static var currentNavigationController: NavigationControllers = .first
     
     var firstNavigationController: UINavigationController?
     var secondNavigationController: UINavigationController?
@@ -42,7 +49,13 @@ class Router: RouterProtocol {
     
     func showArticleViewController(article: Article, with image: UIImage) {
         if let articleViewController = assemblyBuilder?.createArticleModule(router: self, article: article, with: image) {
-            firstNavigationController?.pushViewController(articleViewController, animated: true)
+            
+            switch Router.currentNavigationController {
+            case .first:
+                firstNavigationController?.pushViewController(articleViewController, animated: true)
+            case .second:
+                secondNavigationController?.pushViewController(articleViewController, animated: true)
+            }
         }
     }
     

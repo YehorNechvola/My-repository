@@ -13,7 +13,8 @@ protocol JournalViewProtocol: AnyObject {
 }
 
 protocol JournalViewPresenterProtocol: AnyObject {
-    init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol)
+    init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol, coreDataManager: CoreDataManagerProtocol)
+    func saveArticle(article: Article, image: UIImage)
     var router: RouterProtocol? { get set }
     var journal: Journal? { get set }
     var images: [UIImage] { get set }
@@ -24,13 +25,15 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     weak var view: JournalViewProtocol?
     var router: RouterProtocol?
     private var networkService: NetworkServiceProtocol
+    var coreDataManager: CoreDataManagerProtocol
     var journal: Journal?
     var images: [UIImage] = []
     
-    required init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol) {
+    required init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol, coreDataManager: CoreDataManagerProtocol) {
         self.view = view
         self.router = router
         self.networkService = networkService
+        self.coreDataManager = coreDataManager
         getJournal()
     }
     
@@ -55,9 +58,9 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
         var images = [UIImage]()
         
         for i in journal.articles! {
-            let url = URL(string: i.urlToImage)
+            guard let url = URL(string: i.urlToImage ?? "") else { return images }
             do {
-                let data = try Data(contentsOf: url!)
+                let data = try Data(contentsOf: url)
                 let image = UIImage(data: data)
                 images.append(image!)
                 
@@ -66,5 +69,9 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
             }
         }
         return images
+    }
+    
+    func saveArticle(article: Article, image: UIImage) {
+        coreDataManager.saveArticle(article, with: image)
     }
 }

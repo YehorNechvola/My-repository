@@ -12,21 +12,31 @@ protocol SavedArticlesViewProtocol: AnyObject {
 }
 
 protocol SavedArticlesPresenterProtocol: AnyObject {
-    init(view: SavedArticlesViewProtocol, router: RouterProtocol)
-    func getSavedArticles() -> [Article]?
+    init(view: SavedArticlesViewProtocol, router: RouterProtocol, coreDataManager: CoreDataManagerProtocol)
+    func getSavedArticles()
+    func cleanAllArticles()
+    var articles: [Article] { get set }
+    var router: RouterProtocol { get set }
 }
 
 class SavedArticlesPresenter: SavedArticlesPresenterProtocol {
 
     weak var view: SavedArticlesViewProtocol?
     var router: RouterProtocol
+    var coreDataManager: CoreDataManagerProtocol
+    var articles: [Article] = []
     
-    required init(view: SavedArticlesViewProtocol, router: RouterProtocol) {
+    required init(view: SavedArticlesViewProtocol, router: RouterProtocol, coreDataManager: CoreDataManagerProtocol) {
         self.view = view
         self.router = router
+        self.coreDataManager = coreDataManager
     }
     
-    func getSavedArticles() -> [Article]? {
-        return nil
+    func getSavedArticles()   {
+        articles = coreDataManager.fetchArticles()
+    }
+    
+    func cleanAllArticles() {
+        coreDataManager.cleanAllObjects()
     }
 }

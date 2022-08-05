@@ -28,6 +28,7 @@ class JournalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        Router.currentNavigationController = .first
         title = "Articles"
         setupTableView()
     }
@@ -81,6 +82,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         guard let journal = presenter.journal else { return }
         guard let article = journal.articles?[indexPath.row] else { return }
         let image = presenter.images[indexPath.row]
+        presenter.saveArticle(article: article, image: image)
         presenter.router?.showArticleViewController(article: article, with: image)
     }
 }

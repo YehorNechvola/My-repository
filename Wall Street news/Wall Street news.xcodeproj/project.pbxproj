@@ -17,6 +17,7 @@
 		742C42E12880921F001C4FDA /* URLAdresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42E02880921F001C4FDA /* URLAdresses.swift */; };
 		746EDF7B2887EF84001CCA00 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746EDF7A2887EF84001CCA00 /* Router.swift */; };
 		74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74872E672881586F00D07ECB /* AssemblyBuilder.swift */; };
+		7497F608289C17760031DD56 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497F607289C17760031DD56 /* Array+Extension.swift */; };
 		74CED4F72885AFD400907717 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CED4F62885AFD400907717 /* String+Extension.swift */; };
 		74CF50D6289533E00025EAE8 /* SceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */; };
 		74CF50DC2895351E0025EAE8 /* SavedArticlesUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF50DA2895351E0025EAE8 /* SavedArticlesUIViewController.swift */; };
@@ -28,6 +29,10 @@
 		74DF6FBE28844BA000C5627A /* ArticleViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6FBD28844BA000C5627A /* ArticleViewPresenter.swift */; };
 		74DF6FC2288450B100C5627A /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DF6FC0288450B100C5627A /* ArticleViewController.swift */; };
 		74DF6FC3288450B100C5627A /* ArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74DF6FC1288450B100C5627A /* ArticleViewController.xib */; };
+		74F2F4EB2898397E00C0EE18 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74F2F4E92898397E00C0EE18 /* CoreDataModel.xcdatamodeld */; };
+		74F2F4F228983AE700C0EE18 /* ArticleModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2F4F028983AE700C0EE18 /* ArticleModel+CoreDataClass.swift */; };
+		74F2F4F328983AE700C0EE18 /* ArticleModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2F4F128983AE700C0EE18 /* ArticleModel+CoreDataProperties.swift */; };
+		74F2F4F528983B1A00C0EE18 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2F4F428983B1A00C0EE18 /* CoreDataManager.swift */; };
 		74FA969A288055770065F7EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA9699288055770065F7EB /* AppDelegate.swift */; };
 		74FA969C288055770065F7EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA969B288055770065F7EB /* SceneDelegate.swift */; };
 		74FA96A1288055770065F7EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FA969F288055770065F7EB /* Main.storyboard */; };
@@ -46,6 +51,7 @@
 		742C42E02880921F001C4FDA /* URLAdresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLAdresses.swift; sourceTree = "<group>"; };
 		746EDF7A2887EF84001CCA00 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		74872E672881586F00D07ECB /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		7497F607289C17760031DD56 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		74CED4F62885AFD400907717 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Extension.swift"; sourceTree = "<group>"; };
 		74CF50DA2895351E0025EAE8 /* SavedArticlesUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesUIViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,10 @@
 		74DF6FBD28844BA000C5627A /* ArticleViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewPresenter.swift; sourceTree = "<group>"; };
 		74DF6FC0288450B100C5627A /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		74DF6FC1288450B100C5627A /* ArticleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleViewController.xib; sourceTree = "<group>"; };
+		74F2F4EA2898397E00C0EE18 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		74F2F4F028983AE700C0EE18 /* ArticleModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		74F2F4F128983AE700C0EE18 /* ArticleModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		74F2F4F428983B1A00C0EE18 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		74FA9696288055770065F7EB /* Wall Street news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wall Street news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FA9699288055770065F7EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74FA969B288055770065F7EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +145,7 @@
 		742C42DC2880876E001C4FDA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				74F2F4E82898392800C0EE18 /* CoreDataManager */,
 				746EDF792887EF3D001CCA00 /* Routers */,
 				74CED4F52885AFA200907717 /* ExtensionsHelpers */,
 				74872E662881584F00D07ECB /* AssemblyBuilder */,
@@ -187,11 +198,22 @@
 			path = AssemblyBuilder;
 			sourceTree = "<group>";
 		};
+		7497F604289C0CAC0031DD56 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				74F2F4F128983AE700C0EE18 /* ArticleModel+CoreDataProperties.swift */,
+				74F2F4F028983AE700C0EE18 /* ArticleModel+CoreDataClass.swift */,
+				74F2F4E92898397E00C0EE18 /* CoreDataModel.xcdatamodeld */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
 		74CED4F52885AFA200907717 /* ExtensionsHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				74CED4F62885AFD400907717 /* String+Extension.swift */,
 				74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */,
+				7497F607289C17760031DD56 /* Array+Extension.swift */,
 			);
 			path = ExtensionsHelpers;
 			sourceTree = "<group>";
@@ -272,6 +294,15 @@
 				74DF6FC1288450B100C5627A /* ArticleViewController.xib */,
 			);
 			path = ArticleViewController;
+			sourceTree = "<group>";
+		};
+		74F2F4E82898392800C0EE18 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				7497F604289C0CAC0031DD56 /* CoreDataModel */,
+				74F2F4F428983B1A00C0EE18 /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
 		74FA968D288055770065F7EB = {
@@ -379,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74F2F4EB2898397E00C0EE18 /* CoreDataModel.xcdatamodeld in Sources */,
 				74CF50DC2895351E0025EAE8 /* SavedArticlesUIViewController.swift in Sources */,
 				742C42DB28808710001C4FDA /* JournalPresenter.swift in Sources */,
 				742C42D7288081DF001C4FDA /* ArticleTableViewCell.swift in Sources */,
@@ -386,8 +418,12 @@
 				74CF50D6289533E00025EAE8 /* SceneDelegate+Extension.swift in Sources */,
 				74DF6FBE28844BA000C5627A /* ArticleViewPresenter.swift in Sources */,
 				74CF50E5289558460025EAE8 /* FullArticleViewController.swift in Sources */,
+				74F2F4F228983AE700C0EE18 /* ArticleModel+CoreDataClass.swift in Sources */,
+				74F2F4F328983AE700C0EE18 /* ArticleModel+CoreDataProperties.swift in Sources */,
+				74F2F4F528983B1A00C0EE18 /* CoreDataManager.swift in Sources */,
 				74CED4F72885AFD400907717 /* String+Extension.swift in Sources */,
 				742C42E12880921F001C4FDA /* URLAdresses.swift in Sources */,
+				7497F608289C17760031DD56 /* Array+Extension.swift in Sources */,
 				74DF6FC2288450B100C5627A /* ArticleViewController.swift in Sources */,
 				74CF50E82895594A0025EAE8 /* FullArticlePresenter.swift in Sources */,
 				74CF50DF2895377E0025EAE8 /* SavedArticlesPresenter.swift in Sources */,
@@ -616,6 +652,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		74F2F4E92898397E00C0EE18 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				74F2F4EA2898397E00C0EE18 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 74F2F4EA2898397E00C0EE18 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 74FA968E288055770065F7EB /* Project object */;
 }

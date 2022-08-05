@@ -19,7 +19,8 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
     func createJournalModule(router: RouterProtocol) -> JournalViewController {
         let view = JournalViewController()
         let networkService = NetworkService()
-        let presenter = JournalViewPresenter(view: view, router: router, networkService: networkService)
+        let coreDataManager = CoreDataManager()
+        let presenter = JournalViewPresenter(view: view, router: router, networkService: networkService, coreDataManager: coreDataManager)
         view.presenter = presenter
         return view
     }
@@ -33,7 +34,8 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
     
     func createSavedArticleModule(router: RouterProtocol) -> SavedArticlesUIViewController {
         let view = SavedArticlesUIViewController()
-        let presenter = SavedArticlesPresenter(view: view, router: router)
+        let coreDataManager = CoreDataManager()
+        let presenter = SavedArticlesPresenter(view: view, router: router, coreDataManager: coreDataManager)
         view.presenter = presenter
         return view
     }
