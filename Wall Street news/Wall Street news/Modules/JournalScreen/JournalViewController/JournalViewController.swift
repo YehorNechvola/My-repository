@@ -42,8 +42,10 @@ class JournalViewController: UIViewController {
     }
     
     private func setupActivityIndicator() {
-        activityIndicator.center = view.center
         view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.startAnimating()
     }
 }
