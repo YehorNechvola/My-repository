@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SavedArticlesViewProtocol: AnyObject {
-    func showSavedArticles()
+    func showHideInfoLabelForUser()
 }
 
 protocol SavedArticlesPresenterProtocol: AnyObject {

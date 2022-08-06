@@ -24,12 +24,8 @@ class SavedArticlesUIViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cleanButton = UIBarButtonItem(title: "clean all", style: .plain, target: self, action: #selector(cleanItemTapped))
-        navigationItem.rightBarButtonItem = cleanButton
-        title = "Saved articles"
-        showSavedArticles()
-        infoForUserLabel.text = "You don't have any saved articles yet"
-        showSavedArticles()
+        createRightBarButtonItem()
+        setTitles()
         setupTableView()
     }
     
@@ -37,7 +33,7 @@ class SavedArticlesUIViewController: UIViewController {
         super.viewWillAppear(animated)
         
         Router.currentNavigationController = .second
-        showSavedArticles()
+        showHideInfoLabelForUser()
         presenter.getSavedArticles()
         savedArticlesTableView.reloadData()
     }
@@ -50,10 +46,21 @@ class SavedArticlesUIViewController: UIViewController {
         savedArticlesTableView.dataSource = self
     }
     
+    private func createRightBarButtonItem() {
+        let cleanButton = UIBarButtonItem(title: "clean all", style: .plain, target: self, action: #selector(cleanItemTapped))
+        navigationItem.rightBarButtonItem = cleanButton
+    }
+    
     @objc private func cleanItemTapped() {
+        infoForUserLabel.isHidden = false
         presenter.articles = []
         presenter.cleanAllArticles()
         savedArticlesTableView.reloadData()
+    }
+    
+    private func setTitles() {
+        title = "Saved articles"
+        infoForUserLabel.text = "You don't have any saved articles yet"
     }
 }
 
@@ -66,24 +73,27 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arr = presenter.articles.uniqued()
-        return arr.count
+        let uniqueArray = presenter.articles.uniqued()
+        return uniqueArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
-        let arr = presenter.articles.uniqued()
-        let article = arr[indexPath.row]
-        cell.setup(title: article.title!, and: article.publishedAt!, with: article.author!)
+        let uniqueArray = presenter.articles.uniqued()
+        let article = uniqueArray[indexPath.row]
         let image = UIImage(data: article.imageData ?? Data())
+        
+        cell.setup(title: article.title!, and: article.publishedAt!, with: article.author!)
         cell.setup(image: image ?? UIImage())
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = presenter.articles[indexPath.row]
         let image = UIImage(data: article.imageData ?? Data())
+        
         presenter.router.showArticleViewController(article: article, with: image!)
     }
 }
@@ -92,12 +102,8 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
 
 extension SavedArticlesUIViewController: SavedArticlesViewProtocol {
     
-    func showSavedArticles() {
-        
-        if !(savedArticlesTableView.numberOfRows(inSection: 0) == 0) {
-            infoForUserLabel.isHidden = true
-        } else {
-            infoForUserLabel.isHidden = false
-        }
+    func showHideInfoLabelForUser() {
+        savedArticlesTableView.numberOfRows(inSection: 0) == 0 ? (infoForUserLabel.isHidden = true)
+                                                                : (infoForUserLabel.isHidden = false)
     }
 }

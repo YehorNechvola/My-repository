@@ -19,6 +19,8 @@ struct Article: Codable, Hashable {
     var url: String?
     var urlToImage: String?
     var publishedAt: String?
+    
+    // no parced property image data
     var imageData: Data?
 }
 

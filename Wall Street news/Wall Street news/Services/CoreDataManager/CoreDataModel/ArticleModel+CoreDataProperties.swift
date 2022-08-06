@@ -2,7 +2,7 @@
 //  ArticleModel+CoreDataProperties.swift
 //  Wall Street news
 //
-//  Created by Егор on 01.08.2022.
+//  Created by Егор on 06.08.2022.
 //
 //
 
@@ -17,10 +17,11 @@ extension ArticleModel {
     }
 
     @NSManaged public var author: String?
-    @NSManaged public var title: String?
     @NSManaged public var content: String?
-    @NSManaged public var publishedtAT: String?
     @NSManaged public var imageData: Data?
+    @NSManaged public var publishedtAT: String?
+    @NSManaged public var title: String?
+    @NSManaged public var urlToArticle: String?
 
 }
 

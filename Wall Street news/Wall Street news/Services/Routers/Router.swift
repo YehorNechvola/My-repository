@@ -68,7 +68,13 @@ class Router: RouterProtocol {
     func showFullArticleViewController(by urlToArticle: String) {
         
         if let fullArticleViewController = assemblyBuilder?.createFullArticleModule(router: self, urlToArticle: urlToArticle) {
-            firstNavigationController?.pushViewController(fullArticleViewController, animated: true)
+            
+            switch Router.currentNavigationController {
+            case .first:
+                firstNavigationController?.pushViewController(fullArticleViewController, animated: true)
+            case .second:
+                secondNavigationController?.pushViewController(fullArticleViewController, animated: true)
+            }
         }
     }
 }

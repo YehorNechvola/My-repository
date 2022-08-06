@@ -12,6 +12,7 @@ extension SceneDelegate {
     func makeEntryPoint(windowScene: UIWindowScene) {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
+        
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .black
         let firstNavigationController = UINavigationController()

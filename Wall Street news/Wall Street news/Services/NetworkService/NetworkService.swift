@@ -21,7 +21,6 @@ class NetworkService: NetworkServiceProtocol {
         guard let url = URL(string: url) else { return }
         
         session.dataTask(with: url) { data, response, error in
-            print(response ?? "nil")
             
             if let error = error {
                 completion(.failure(error))

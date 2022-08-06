@@ -6,8 +6,9 @@
         <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="publishedtAT" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="urlToArticle" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ArticleEntity" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="ArticleEntity" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

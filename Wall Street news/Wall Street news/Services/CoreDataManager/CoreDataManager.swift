@@ -48,6 +48,7 @@ class CoreDataManager: CoreDataManagerProtocol {
         articleModel.content = article.description
         articleModel.publishedtAT = article.publishedAt
         articleModel.imageData = image.pngData()
+        articleModel.urlToArticle = article.url
         
         saveContext()
     }
@@ -62,7 +63,7 @@ class CoreDataManager: CoreDataManagerProtocol {
                 let article = Article(author: a.author,
                                       title: a.title,
                                       description: a.content,
-                                      url: "",
+                                      url: a.urlToArticle,
                                       urlToImage: "",
                                       publishedAt: a.publishedtAT,
                                       imageData: a.imageData)
@@ -83,6 +84,7 @@ class CoreDataManager: CoreDataManagerProtocol {
                 context.delete(objectToDelete)
             }
             saveContext()
+            
         } catch let error {
             print(error)
         }
