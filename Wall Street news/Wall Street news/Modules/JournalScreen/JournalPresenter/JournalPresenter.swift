@@ -14,6 +14,7 @@ protocol JournalViewProtocol: AnyObject {
 
 protocol JournalViewPresenterProtocol: AnyObject {
     init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol, coreDataManager: CoreDataManagerProtocol)
+    func getJournal()
     func saveArticle(article: Article, image: UIImage)
     var router: RouterProtocol? { get set }
     var journal: Journal? { get set }

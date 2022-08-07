@@ -13,6 +13,7 @@ class JournalViewController: UIViewController {
     
     var presenter: JournalViewPresenterProtocol!
     let activityIndicator = UIActivityIndicatorView()
+    let refreshContol = UIRefreshControl()
     
     // MARK: - Outlets
     
@@ -29,13 +30,14 @@ class JournalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         Router.currentNavigationController = .first
-        title = "Articles"
         setupTableView()
+        setupRefreshControl()
     }
     
     // MARK: - Methods
     
     private func setupTableView() {
+        title = "Articles"
         journalTableView.delegate = self
         journalTableView.dataSource = self
         journalTableView.register(ArticleTableViewCell.nib, forCellReuseIdentifier: ArticleTableViewCell.identifier)
@@ -47,6 +49,17 @@ class JournalViewController: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.startAnimating()
+    }
+    
+    private func setupRefreshControl() {
+        journalTableView.addSubview(refreshContol)
+        refreshContol.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc private func refresh() {
+        presenter.getJournal()
+        journalTableView.reloadData()
+        refreshContol.endRefreshing()
     }
 }
 
@@ -107,6 +120,7 @@ extension JournalViewController: JournalViewProtocol {
 // MARK: - ArticleTableViewCellProtocol
 
 extension JournalViewController: ArticleTableViewCellProtocol {
+    
     func saveArticle() {
         print("needs code")
     }
