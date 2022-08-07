@@ -33,9 +33,9 @@ class SavedArticlesUIViewController: UIViewController {
         super.viewWillAppear(animated)
         
         Router.currentNavigationController = .second
-        showHideInfoLabelForUser()
         presenter.getSavedArticles()
         savedArticlesTableView.reloadData()
+        showHideInfoLabelForUser()
     }
     
     // MARK: - Methods
@@ -47,7 +47,7 @@ class SavedArticlesUIViewController: UIViewController {
     }
     
     private func createRightBarButtonItem() {
-        let cleanButton = UIBarButtonItem(title: "clean all", style: .plain, target: self, action: #selector(cleanItemTapped))
+        let cleanButton = UIBarButtonItem(title: "clean", style: .plain, target: self, action: #selector(cleanItemTapped))
         navigationItem.rightBarButtonItem = cleanButton
     }
     
@@ -103,7 +103,7 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
 extension SavedArticlesUIViewController: SavedArticlesViewProtocol {
     
     func showHideInfoLabelForUser() {
-        savedArticlesTableView.numberOfRows(inSection: 0) == 0 ? (infoForUserLabel.isHidden = true)
-                                                                : (infoForUserLabel.isHidden = false)
+        
+        presenter.articles.count != 0 ? (infoForUserLabel.isHidden = true) : (infoForUserLabel.isHidden = false)
     }
 }
