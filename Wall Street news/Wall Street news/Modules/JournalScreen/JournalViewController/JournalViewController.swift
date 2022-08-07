@@ -25,13 +25,13 @@ class JournalViewController: UIViewController {
         super.viewDidLoad()
         
         setupActivityIndicator()
+        setupRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         Router.currentNavigationController = .first
         setupTableView()
-        setupRefreshControl()
     }
     
     // MARK: - Methods
@@ -97,7 +97,6 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         guard let journal = presenter.journal else { return }
         guard let article = journal.articles?[indexPath.row] else { return }
         let image = presenter.images[indexPath.row]
-        presenter.saveArticle(article: article, image: image)
         presenter.router?.showArticleViewController(article: article, with: image)
     }
 }
@@ -121,8 +120,12 @@ extension JournalViewController: JournalViewProtocol {
 
 extension JournalViewController: ArticleTableViewCellProtocol {
     
-    func saveArticle() {
-        print("needs code")
+    func saveArticle(in cell: ArticleTableViewCell) {
+        guard let indexPath = journalTableView.indexPath(for: cell) else { return }
+        guard let journal = presenter.journal else { return }
+        guard let article = journal.articles?[indexPath.row] else { return }
+        let image = presenter.images[indexPath.row]
+        presenter.saveArticle(article: article, image: image)
     }
 }
 

@@ -9,7 +9,7 @@ import UIKit
 
 protocol ArticleTableViewCellProtocol: AnyObject {
     
-    func saveArticle()
+    func saveArticle(in cell: ArticleTableViewCell)
 }
 
 class ArticleTableViewCell: UITableViewCell {
@@ -38,7 +38,7 @@ class ArticleTableViewCell: UITableViewCell {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        delegate?.saveArticle()
+        delegate?.saveArticle(in: self)
     }
     
     // MARK: - Methods
