@@ -42,6 +42,21 @@ class CoreDataManager: CoreDataManagerProtocol {
     }
     
     func saveArticle(_ article: Article, with image: UIImage) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ArticleEntity")
+        fetchRequest.predicate = NSPredicate(format: "title = %@ ", article.title ?? "nil")
+        
+        do {
+            let fetchResult = try context.fetch(fetchRequest)
+            if fetchResult.count > 0 {
+                for doubleData in fetchResult {
+                    context.delete(doubleData as! NSManagedObject)
+                }
+            }
+            
+        } catch let error {
+            print(error)
+        }
+        
         let articleModel = ArticleModel(context: context)
         articleModel.author = article.author
         articleModel.title = article.title

@@ -73,15 +73,13 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let uniqueArray = presenter.articles.uniqued()
-        return uniqueArray.count
+        return presenter.articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
-        let uniqueArray = presenter.articles.uniqued()
-        let article = uniqueArray[indexPath.row]
+        let article = presenter.articles[indexPath.row]
         let image = UIImage(data: article.imageData ?? Data())
         
         cell.setup(title: article.title!, and: article.publishedAt!, with: article.author!)
