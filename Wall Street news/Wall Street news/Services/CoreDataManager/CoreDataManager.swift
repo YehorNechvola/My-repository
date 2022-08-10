@@ -15,6 +15,7 @@ protocol CoreDataManagerProtocol: AnyObject {
     func saveArticle(_ article: Article, with image: UIImage)
     func fetchArticles() -> [Article]
     func cleanAllObjects()
+    func deleteArticle(by title: String)
 }
 
 class CoreDataManager: CoreDataManagerProtocol {
@@ -99,6 +100,23 @@ class CoreDataManager: CoreDataManagerProtocol {
                 context.delete(objectToDelete)
             }
             saveContext()
+            
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func deleteArticle(by title: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ArticleEntity")
+        fetchRequest.predicate = NSPredicate(format: "title = %@ ", title)
+        
+        do {
+            let fetchResult = try context.fetch(fetchRequest)
+            if fetchResult.count > 0 {
+                for doubleData in fetchResult {
+                    context.delete(doubleData as! NSManagedObject)
+                }
+            }
             
         } catch let error {
             print(error)

@@ -15,6 +15,7 @@ protocol SavedArticlesPresenterProtocol: AnyObject {
     init(view: SavedArticlesViewProtocol, router: RouterProtocol, coreDataManager: CoreDataManagerProtocol)
     func getSavedArticles()
     func cleanAllArticles()
+    func deleteArticle(by title: String)
     var articles: [Article] { get set }
     var router: RouterProtocol { get set }
 }
@@ -38,5 +39,9 @@ class SavedArticlesPresenter: SavedArticlesPresenterProtocol {
     
     func cleanAllArticles() {
         coreDataManager.cleanAllObjects()
+    }
+    
+    func deleteArticle(by title: String) {
+        coreDataManager.deleteArticle(by: title)
     }
 }

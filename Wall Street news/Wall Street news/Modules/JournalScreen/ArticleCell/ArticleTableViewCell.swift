@@ -7,9 +7,13 @@
 
 import UIKit
 
+
 protocol ArticleTableViewCellProtocol: AnyObject {
-    
     func saveArticle(in cell: ArticleTableViewCell)
+}
+
+protocol DeleteArticleInTableViewCellProtocol: AnyObject {
+    func deleteArticle(in cell: ArticleTableViewCell)
 }
 
 class ArticleTableViewCell: UITableViewCell {
@@ -19,6 +23,7 @@ class ArticleTableViewCell: UITableViewCell {
     static let nib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
     static let identifier = "ArticleTableViewCell"
     var delegate: JournalViewController?
+    var deleteArticleDelegate: SavedArticlesUIViewController?
     
     // MARK: - Outlets
     
@@ -26,7 +31,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleArticleLabel: UILabel!
     @IBOutlet private weak var dateOfArticleLabel: UILabel!
     @IBOutlet private weak var authorLabel: UILabel!
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet private weak var saveButton: UIButton!
     
     // MARK: - life cycle
     
@@ -35,10 +40,16 @@ class ArticleTableViewCell: UITableViewCell {
         
         titleArticleLabel.sizeToFit()
         selectionStyle = .none
+        saveButton.tintColor = .blue
+        if Router.currentNavigationController == .second {
+            saveButton.setTitle("remove", for: .normal)
+            saveButton.tintColor = .red
+        }
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         delegate?.saveArticle(in: self)
+        deleteArticleDelegate?.deleteArticle(in: self)
     }
     
     // MARK: - Methods

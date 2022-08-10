@@ -79,6 +79,7 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
+        cell.deleteArticleDelegate = self
         let article = presenter.articles[indexPath.row]
         let image = UIImage(data: article.imageData ?? Data())
         
@@ -103,5 +104,18 @@ extension SavedArticlesUIViewController: SavedArticlesViewProtocol {
     func showHideInfoLabelForUser() {
         
         presenter.articles.count != 0 ? (infoForUserLabel.isHidden = true) : (infoForUserLabel.isHidden = false)
+    }
+}
+
+// MARK: - DeleteArticleInTableViewCellProtocol
+
+extension SavedArticlesUIViewController: DeleteArticleInTableViewCellProtocol {
+    
+    func deleteArticle(in cell: ArticleTableViewCell) {
+        guard let indexPath = savedArticlesTableView.indexPath(for: cell) else { return }
+        let article = presenter.articles[indexPath.row]
+        presenter.deleteArticle(by: article.title ?? "no mathes")
+        presenter.getSavedArticles()
+        savedArticlesTableView.deleteRows(at: [indexPath], with: .left)
     }
 }
