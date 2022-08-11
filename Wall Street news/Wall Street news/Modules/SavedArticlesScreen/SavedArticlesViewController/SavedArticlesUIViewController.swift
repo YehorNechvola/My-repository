@@ -102,7 +102,6 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
 extension SavedArticlesUIViewController: SavedArticlesViewProtocol {
     
     func showHideInfoLabelForUser() {
-        
         presenter.articles.count != 0 ? (infoForUserLabel.isHidden = true) : (infoForUserLabel.isHidden = false)
     }
 }
@@ -117,5 +116,6 @@ extension SavedArticlesUIViewController: DeleteArticleInTableViewCellProtocol {
         presenter.deleteArticle(by: article.title ?? "no mathes")
         presenter.getSavedArticles()
         savedArticlesTableView.deleteRows(at: [indexPath], with: .left)
+        showHideInfoLabelForUser()
     }
 }
