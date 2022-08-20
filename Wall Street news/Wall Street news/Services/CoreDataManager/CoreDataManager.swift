@@ -117,7 +117,7 @@ class CoreDataManager: CoreDataManagerProtocol {
                     context.delete(doubleData as! NSManagedObject)
                 }
             }
-            
+            saveContext()
         } catch let error {
             print(error)
         }

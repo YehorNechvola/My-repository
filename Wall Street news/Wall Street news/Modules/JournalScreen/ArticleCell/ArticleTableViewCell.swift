@@ -10,6 +10,7 @@ import UIKit
 
 protocol ArticleTableViewCellProtocol: AnyObject {
     func saveArticle(in cell: ArticleTableViewCell)
+    func saveTagOfPressedButton(sender: UIButton)
 }
 
 protocol DeleteArticleInTableViewCellProtocol: AnyObject {
@@ -22,8 +23,8 @@ class ArticleTableViewCell: UITableViewCell {
     
     static let nib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
     static let identifier = "ArticleTableViewCell"
-    var delegate: JournalViewController?
-    var deleteArticleDelegate: SavedArticlesUIViewController?
+    weak var delegate: JournalViewController?
+    weak var deleteArticleDelegate: SavedArticlesUIViewController?
     
     // MARK: - Outlets
     
@@ -38,23 +39,22 @@ class ArticleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleArticleLabel.sizeToFit()
-        selectionStyle = .none
-        saveButton.tintColor = .blue
-        if Router.currentNavigationController == .second {
-            saveButton.setTitle("remove", for: .normal)
-            saveButton.tintColor = .red
-        }
+        setupUI()
+        setupRemoveButton()
     }
     
-    @IBAction func saveButtonPressed(_ sender: Any) {
+    // MARK: - Actions
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        setButtonStateByTap()
+        delegate?.saveTagOfPressedButton(sender: saveButton)
         delegate?.saveArticle(in: self)
         deleteArticleDelegate?.deleteArticle(in: self)
     }
     
     // MARK: - Methods
     
-    func setup(title: String, and date: String, with author: String) {
+    func setup(title: String, date: String, author: String) {
         titleArticleLabel.text = title
         dateOfArticleLabel.text = date.format()
         authorLabel.text = author
@@ -62,5 +62,39 @@ class ArticleTableViewCell: UITableViewCell {
     
     func setup(image: UIImage) {
         articleImageView.image = image
+    }
+    
+    private func setButtonStateByTap() {
+        if Router.currentNavigationController == .first {
+            saveButton.tintColor = .green
+            saveButton.setTitle("saved", for: .normal)
+        }
+    }
+    
+    func handleStateOfSaveButtons(with tags: [Int]) {
+        if tags.contains(saveButton.tag) {
+            saveButton.tintColor = .green
+            saveButton.setTitle("saved", for: .normal)
+        } else {
+            saveButton.tintColor = .blue
+            saveButton.setTitle("save", for: .normal)
+        }
+    }
+    
+    func setTag(by indexPath: IndexPath) {
+        saveButton.tag = indexPath.row
+    }
+    
+    private func setupRemoveButton() {
+        if Router.currentNavigationController == .second {
+            saveButton.setTitle("remove", for: .normal)
+            saveButton.tintColor = .red
+        }
+    }
+    
+    private func setupUI() {
+        titleArticleLabel.sizeToFit()
+        selectionStyle = .none
+        saveButton.tintColor = .blue
     }
 }

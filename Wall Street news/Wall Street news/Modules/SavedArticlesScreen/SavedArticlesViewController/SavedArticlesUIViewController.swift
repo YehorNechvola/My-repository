@@ -83,7 +83,7 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
         let article = presenter.articles[indexPath.row]
         let image = UIImage(data: article.imageData ?? Data())
         
-        cell.setup(title: article.title!, and: article.publishedAt!, with: article.author!)
+        cell.setup(title: article.title!, date: article.publishedAt!, author: article.author!)
         cell.setup(image: image ?? UIImage())
         
         return cell
