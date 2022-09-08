@@ -42,10 +42,11 @@ class ArticleViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction private func readFullArticlePressed(_ sender: UIButton) {
-        guard let url = presenter.article?.url else { return }
-        presenter.router?.showFullArticleViewController(by: url)
+
+            guard let url = self.presenter.article?.url else { return }
+            self.presenter.router?.showFullArticleViewController(by: url)
+        }
     }
-}
 
 // MARK: - ArticleViewProtocol
 

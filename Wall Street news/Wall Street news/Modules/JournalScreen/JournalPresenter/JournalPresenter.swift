@@ -16,6 +16,7 @@ protocol JournalViewPresenterProtocol: AnyObject {
     init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol, coreDataManager: CoreDataManagerProtocol)
     func getJournal()
     func saveArticle(article: Article, image: UIImage)
+    func getSavedArticles() -> [Int]
     var router: RouterProtocol? { get set }
     var journal: Journal? { get set }
     var images: [UIImage] { get set }
@@ -74,5 +75,22 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     
     func saveArticle(article: Article, image: UIImage) {
         coreDataManager.saveArticle(article, with: image)
+    }
+    
+    func getSavedArticles() -> [Int] {
+        var indicies: [Int] = []
+        var index = 0
+        guard let downloadedArticles = journal?.articles else { return indicies }
+        let savedArticles = coreDataManager.fetchArticles()
+        
+        for i in downloadedArticles {
+            for a in savedArticles {
+                if i.title == a.title {
+                    indicies.append(index)
+                }
+            }
+            index += 1
+        }
+        return indicies
     }
 }

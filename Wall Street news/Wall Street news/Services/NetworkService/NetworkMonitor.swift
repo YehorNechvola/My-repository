@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import Network
+
+class NetworkMonitor {
+    static let shared = NetworkMonitor()
+    
+    private let queue = DispatchQueue.global(qos: .userInteractive)
+    private let monitor = NWPathMonitor()
+    private(set) var isConnected = false
+    
+    func startMonitoring() {
+        monitor.pathUpdateHandler = { [weak self] path in
+            self?.isConnected = path.status == .satisfied
+        }
+        monitor.start(queue: queue)
+    }
+}

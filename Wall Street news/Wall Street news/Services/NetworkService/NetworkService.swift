@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol NetworkServiceProtocol {
-    func getJournal(url: String, completion: @escaping( Result <Journal, Error>) -> Void)
+    func getJournal(url: String, completion: @escaping(Result <Journal, Error>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {

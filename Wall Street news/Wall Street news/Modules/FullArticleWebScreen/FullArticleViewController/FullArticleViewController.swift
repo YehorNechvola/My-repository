@@ -24,8 +24,19 @@ class FullArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupActivityIndicator()
+        articleWebViev.navigationDelegate = self
         showFullArticle()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !NetworkMonitor.shared.isConnected {
+            showInternetConnectionAlert {
+                print("not connection")
+            }
+        }
+        setupActivityIndicator()
     }
     
     // MARK: - Methods
@@ -49,9 +60,12 @@ extension FullArticleViewController: FullArticleViewProtocol {
         guard let urlToArticle = URL(string: stringUrl) else { return }
         let request = URLRequest(url: urlToArticle)
         articleWebViev.load(request)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            self.activityIndicator.stopAnimating()
-        }
+    }
+}
+
+extension FullArticleViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
     }
 }

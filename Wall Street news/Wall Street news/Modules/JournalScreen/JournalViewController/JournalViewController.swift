@@ -25,14 +25,29 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if !NetworkMonitor.shared.isConnected {
+            showInternetConnectionAlert {
+                self.presenter.getJournal()
+                self.journalTableView.reloadData()
+            }
+        }
+        
         setupActivityIndicator()
         setupRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
+        selectedButtonIndicies = presenter.getSavedArticles()
         Router.currentNavigationController = .first
         setupTableView()
+        journalTableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        setDefaultButtonState()
     }
     
     // MARK: - Methods
@@ -59,8 +74,14 @@ class JournalViewController: UIViewController {
     
     @objc private func refresh() {
         presenter.getJournal()
-        journalTableView.reloadData()
+        setDefaultButtonState()
+        selectedButtonIndicies = presenter.getSavedArticles()
         refreshContol.endRefreshing()
+    }
+    
+    private func setDefaultButtonState() {
+        selectedButtonIndicies = []
+        journalTableView.reloadData()
     }
 }
 
@@ -91,7 +112,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setup(image: image)
         cell.setTag(by: indexPath)
         cell.handleStateOfSaveButtons(with: selectedButtonIndicies)
-        
+    
         return cell
     }
     
@@ -111,6 +132,7 @@ extension JournalViewController: JournalViewProtocol {
     func succes() {
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
+        selectedButtonIndicies = presenter.getSavedArticles()
         journalTableView.reloadData()
     }
     

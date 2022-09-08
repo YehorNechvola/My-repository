@@ -12,6 +12,7 @@ protocol FullArticleViewProtocol: AnyObject {
 }
 
 protocol FullArticlePresenterProtocol: AnyObject {
+    var router: RouterProtocol { get set }
     init(view: FullArticleViewProtocol, router: RouterProtocol, urlToArticle: String)
     var urlToArticle: String? { get set }
 }

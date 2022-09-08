@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Protocols
 
 protocol ArticleTableViewCellProtocol: AnyObject {
     func saveArticle(in cell: ArticleTableViewCell)
