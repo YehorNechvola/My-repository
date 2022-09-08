@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol ArticleViewProtocol: AnyObject {
     func setArticle(article: Article, with image: UIImage)
 }
@@ -21,10 +23,14 @@ protocol ArticleViewPresenterProtocol: AnyObject {
 
 class ArticleViewPresenter: ArticleViewPresenterProtocol {
  
+    // MARK: - Properties
+    
     weak var view: ArticleViewProtocol?
     var router: RouterProtocol?
     var article: Article?
     var imageArticle: UIImage?
+    
+    // MARK: - Initializer
     
     required init(view: ArticleViewProtocol, router: RouterProtocol, article: Article, with image: UIImage) {
         self.view = view
@@ -32,6 +38,8 @@ class ArticleViewPresenter: ArticleViewPresenterProtocol {
         self.article = article
         self.imageArticle = image
     }
+    
+    // MARK: - Methods
     
     public func setArticle() {
         guard let article = article else { return }

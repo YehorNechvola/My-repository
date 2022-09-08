@@ -8,7 +8,16 @@
 import Foundation
 import Network
 
-class NetworkMonitor {
+//MARK: - NetworkMonitorProtocol
+
+protocol NetworkMonitorProtocol {
+    func startMonitoring()
+}
+
+class NetworkMonitor: NetworkMonitorProtocol {
+    
+    //MARK: - Properties
+    
     static let shared = NetworkMonitor()
     
     private let queue = DispatchQueue.global(qos: .userInteractive)

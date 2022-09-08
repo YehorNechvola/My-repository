@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - Protocols
+
 protocol JournalViewProtocol: AnyObject {
     func succes()
     func failure(_ error: Error)
@@ -24,12 +26,16 @@ protocol JournalViewPresenterProtocol: AnyObject {
 
 class JournalViewPresenter: JournalViewPresenterProtocol {
    
+    //MARK: - Properties
+    
     weak var view: JournalViewProtocol?
     var router: RouterProtocol?
     private var networkService: NetworkServiceProtocol
     var coreDataManager: CoreDataManagerProtocol
     var journal: Journal?
     var images: [UIImage] = []
+    
+    //MARK: Initializer
     
     required init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol, coreDataManager: CoreDataManagerProtocol) {
         self.view = view
@@ -39,6 +45,7 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
         getJournal()
     }
     
+    //MARK: - Methods
     func getJournal() {
         networkService.getJournal(url:URLAdresses.articleURL) { [weak self] result in
             guard let self = self else { return }

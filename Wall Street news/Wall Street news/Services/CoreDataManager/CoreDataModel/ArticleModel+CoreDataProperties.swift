@@ -25,6 +25,3 @@ extension ArticleModel {
 
 }
 
-extension ArticleModel : Identifiable {
-
-}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74093FF328C9F6EC0031F3F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74093FF228C9F6EC0031F3F4 /* Constants.swift */; };
 		74253F8128C0E8CA0004DDE2 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74253F8028C0E8CA0004DDE2 /* NetworkMonitor.swift */; };
 		742C42CD28807D86001C4FDA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42CC28807D86001C4FDA /* Article.swift */; };
 		742C42D228807F8D001C4FDA /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42D028807F8D001C4FDA /* JournalViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74093FF228C9F6EC0031F3F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		74253F8028C0E8CA0004DDE2 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		742C42CC28807D86001C4FDA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		742C42D028807F8D001C4FDA /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				74FA96A22880557C0065F7EB /* Assets.xcassets */,
 				74FA96A42880557C0065F7EB /* LaunchScreen.storyboard */,
+				74093FF228C9F6EC0031F3F4 /* Constants.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74093FF328C9F6EC0031F3F4 /* Constants.swift in Sources */,
 				74F2F4EB2898397E00C0EE18 /* CoreDataModel.xcdatamodeld in Sources */,
 				74CF50DC2895351E0025EAE8 /* SavedArticlesUIViewController.swift in Sources */,
 				742C42DB28808710001C4FDA /* JournalPresenter.swift in Sources */,

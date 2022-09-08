@@ -12,9 +12,9 @@ class JournalViewController: UIViewController {
     // MARK: - Properties
     
     var presenter: JournalViewPresenterProtocol!
-    let activityIndicator = UIActivityIndicatorView()
-    let refreshContol = UIRefreshControl()
-    var selectedButtonIndicies: [Int] = []
+    private let activityIndicator = UIActivityIndicatorView()
+    private let refreshContol = UIRefreshControl()
+    private var selectedButtonIndicies: [Int] = []
     
     // MARK: - Outlets
     
@@ -25,13 +25,7 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !NetworkMonitor.shared.isConnected {
-            showInternetConnectionAlert {
-                self.presenter.getJournal()
-                self.journalTableView.reloadData()
-            }
-        }
-        
+        checkInternetConnection()
         setupActivityIndicator()
         setupRefreshControl()
     }
@@ -83,6 +77,15 @@ class JournalViewController: UIViewController {
         selectedButtonIndicies = []
         journalTableView.reloadData()
     }
+    
+    private func checkInternetConnection() {
+        if !NetworkMonitor.shared.isConnected {
+            showInternetConnectionAlert {
+                self.presenter.getJournal()
+                self.journalTableView.reloadData()
+            }
+        }
+    }
 }
 
 // MARK: - TableViewDelegate, TableViewDatasourse
@@ -90,7 +93,7 @@ class JournalViewController: UIViewController {
 extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return Constants.heightForRow
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,7 +134,6 @@ extension JournalViewController: JournalViewProtocol {
     
     func succes() {
         activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
         selectedButtonIndicies = presenter.getSavedArticles()
         journalTableView.reloadData()
     }

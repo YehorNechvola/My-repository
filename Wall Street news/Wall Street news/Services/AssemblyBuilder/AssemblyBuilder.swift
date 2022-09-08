@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - AssemblyBuilderProtocol
+
 protocol AssemblyBuilderProtocol: AnyObject {
     func createJournalModule(router: RouterProtocol) -> JournalViewController
     func createArticleModule(router: RouterProtocol, article: Article, with image: UIImage) -> ArticleViewController
@@ -15,6 +17,8 @@ protocol AssemblyBuilderProtocol: AnyObject {
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
+    
+    //MARK: - Methods
     
     func createJournalModule(router: RouterProtocol) -> JournalViewController {
         let view = JournalViewController()

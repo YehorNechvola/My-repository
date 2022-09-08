@@ -7,6 +7,8 @@
 
 import Foundation
 
+//MARK: - Protocols
+
 protocol FullArticleViewProtocol: AnyObject {
     func showFullArticle()
 }
@@ -18,10 +20,14 @@ protocol FullArticlePresenterProtocol: AnyObject {
 }
 
 class FullArticlePresenter: FullArticlePresenterProtocol {
+ 
+    // MARK: - Properties
     
     weak var view: FullArticleViewProtocol?
     var router: RouterProtocol
     var urlToArticle: String?
+    
+    // MARK: - Initializer
     
     required init(view: FullArticleViewProtocol, router: RouterProtocol, urlToArticle: String) {
         self.view = view

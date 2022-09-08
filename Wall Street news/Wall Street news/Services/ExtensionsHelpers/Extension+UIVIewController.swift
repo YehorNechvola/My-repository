@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Intentet connection message helper
+
 extension UIViewController {
     
     func showInternetConnectionAlert(completion: @escaping() -> Void) {

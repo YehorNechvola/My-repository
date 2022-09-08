@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - Entry point helper
+
 extension SceneDelegate {
     
     func makeEntryPoint(windowScene: UIWindowScene) {

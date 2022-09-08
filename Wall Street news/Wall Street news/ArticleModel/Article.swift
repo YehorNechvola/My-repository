@@ -7,6 +7,8 @@
 
 import Foundation
 
+//MARK: - Models model for the received data
+
 struct Journal: Codable {
     
     var articles: [Article]?
@@ -19,8 +21,6 @@ struct Article: Codable, Hashable {
     var url: String?
     var urlToImage: String?
     var publishedAt: String?
-    
-    // no parced property image data
     var imageData: Data?
 }
 

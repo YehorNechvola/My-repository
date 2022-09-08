@@ -8,14 +8,20 @@
 import Foundation
 import UIKit
 
+//MARK: - NetworkServiceProtocol
+
 protocol NetworkServiceProtocol {
     func getJournal(url: String, completion: @escaping(Result <Journal, Error>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
     
+    //MARK: - Properties
+    
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
+    
+    //MARK: - Methods
     
     func getJournal(url: String, completion: @escaping (Result <Journal, Error>) -> Void) {
         guard let url = URL(string: url) else { return }

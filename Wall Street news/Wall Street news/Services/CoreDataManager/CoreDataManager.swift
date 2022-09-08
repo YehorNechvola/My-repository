@@ -8,6 +8,8 @@
 import CoreData
 import UIKit
 
+// MARK: CoreDataManagerProtocol
+
 protocol CoreDataManagerProtocol: AnyObject {
     var persistentContainer: NSPersistentContainer { get set }
     var context: NSManagedObjectContext { get set }
@@ -20,6 +22,8 @@ protocol CoreDataManagerProtocol: AnyObject {
 
 class CoreDataManager: CoreDataManagerProtocol {
     
+    // MARK: - Properties
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let persistentContainer = NSPersistentContainer(name: "CoreDataModel")
         persistentContainer.loadPersistentStores { desription, error in
@@ -31,6 +35,8 @@ class CoreDataManager: CoreDataManagerProtocol {
     }()
     
     lazy var context = persistentContainer.viewContext
+    
+    // MARK: Methods
     
     func saveContext() {
         if context.hasChanges {
@@ -49,8 +55,8 @@ class CoreDataManager: CoreDataManagerProtocol {
         do {
             let fetchResult = try context.fetch(fetchRequest)
             if fetchResult.count > 0 {
-                for doubleData in fetchResult {
-                    context.delete(doubleData as! NSManagedObject)
+                for object in fetchResult {
+                    context.delete(object as! NSManagedObject)
                 }
             }
             
@@ -74,15 +80,15 @@ class CoreDataManager: CoreDataManagerProtocol {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ArticleEntity")
         do {
-            guard let articleCoreData = try context.fetch(fetchRequest) as? [ArticleModel] else { return articles }
-            for a in articleCoreData {
-                let article = Article(author: a.author,
-                                      title: a.title,
-                                      description: a.content,
-                                      url: a.urlToArticle,
+            guard let fetchResult = try context.fetch(fetchRequest) as? [ArticleModel] else { return articles }
+            for object in fetchResult {
+                let article = Article(author: object.author,
+                                      title: object.title,
+                                      description: object.content,
+                                      url: object.urlToArticle,
                                       urlToImage: "",
-                                      publishedAt: a.publishedtAT,
-                                      imageData: a.imageData)
+                                      publishedAt: object.publishedtAT,
+                                      imageData: object.imageData)
                 articles.insert(article, at: 0)
             }
         } catch let error {
@@ -94,8 +100,8 @@ class CoreDataManager: CoreDataManagerProtocol {
     func cleanAllObjects() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ArticleEntity")
         do {
-            guard let articleCoreData = try context.fetch(fetchRequest) as? [ArticleModel] else { return }
-            for object in articleCoreData {
+            guard let fetchResult = try context.fetch(fetchRequest) as? [ArticleModel] else { return }
+            for object in fetchResult {
                 let objectToDelete: NSManagedObject = object as NSManagedObject
                 context.delete(objectToDelete)
             }
@@ -113,8 +119,8 @@ class CoreDataManager: CoreDataManagerProtocol {
         do {
             let fetchResult = try context.fetch(fetchRequest)
             if fetchResult.count > 0 {
-                for doubleData in fetchResult {
-                    context.delete(doubleData as! NSManagedObject)
+                for object in fetchResult {
+                    context.delete(object as! NSManagedObject)
                 }
             }
             saveContext()

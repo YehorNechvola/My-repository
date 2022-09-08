@@ -69,7 +69,7 @@ class SavedArticlesUIViewController: UIViewController {
 extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        160
+        Constants.heightForRow
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,8 +82,7 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
         cell.deleteArticleDelegate = self
         let article = presenter.articles[indexPath.row]
         let image = UIImage(data: article.imageData ?? Data())
-        
-        cell.setup(title: article.title!, date: article.publishedAt!, author: article.author!)
+        cell.setup(title: article.title ?? "" , date: article.publishedAt ?? "", author: article.author ?? "")
         cell.setup(image: image ?? UIImage())
         
         return cell
