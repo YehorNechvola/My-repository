@@ -53,12 +53,14 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
             
             DispatchQueue.main.async {
                 switch result {
-                case .success(let journal):
-                    if self.journal?.articles?.first == journal.articles?.first { return }
+                case .success(let downloadedJournal):
+                    if self.journal?.articles?.first == downloadedJournal.articles?.first { return }
+                    self.journal = downloadedJournal
                     
-                    self.journal = journal
-                    self.images = self.getImages(from: self.journal!)
-                    self.view?.succes()
+                    if let journal = self.journal {
+                        self.images = self.getImages(from: journal)
+                        self.view?.succes()
+                    }
                 case .failure(let error):
                     self.view?.failure(error)
                 }
@@ -77,8 +79,6 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
                 if let image = UIImage(data: data) {
                     images.append(image)
                 }
-                
-                
             } catch {
                 print(error)
             }

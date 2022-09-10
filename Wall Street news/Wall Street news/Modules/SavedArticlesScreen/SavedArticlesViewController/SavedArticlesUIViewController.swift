@@ -64,8 +64,7 @@ class SavedArticlesUIViewController: UIViewController {
                 self.infoForUserLabel.isHidden = false
         }
     }
-    
-    
+
     private func setTitles() {
         title = "Saved articles"
         infoForUserLabel.text = "You don't have any saved articles yet"
