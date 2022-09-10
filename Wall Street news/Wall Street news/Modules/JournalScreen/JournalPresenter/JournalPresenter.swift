@@ -46,6 +46,7 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     }
     
     //MARK: - Methods
+    
     func getJournal() {
         networkService.getJournal(url:URLAdresses.articleURL) { [weak self] result in
             guard let self = self else { return }
@@ -53,6 +54,8 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let journal):
+                    if self.journal?.articles?.first == journal.articles?.first { return }
+                    
                     self.journal = journal
                     self.images = self.getImages(from: self.journal!)
                     self.view?.succes()
@@ -63,15 +66,18 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
         }
     }
     
-   private func getImages(from journal: Journal) -> [UIImage] {
+    private func getImages(from journal: Journal) -> [UIImage] {
         var images = [UIImage]()
         
         for i in journal.articles! {
             guard let url = URL(string: i.urlToImage ?? "") else { return images }
+            
             do {
                 let data = try Data(contentsOf: url)
-                let image = UIImage(data: data)
-                images.append(image!)
+                if let image = UIImage(data: data) {
+                    images.append(image)
+                }
+                
                 
             } catch {
                 print(error)

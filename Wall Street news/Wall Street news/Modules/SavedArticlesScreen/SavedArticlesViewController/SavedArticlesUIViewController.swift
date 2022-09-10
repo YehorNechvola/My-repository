@@ -52,11 +52,19 @@ class SavedArticlesUIViewController: UIViewController {
     }
     
     @objc private func cleanItemTapped() {
-        infoForUserLabel.isHidden = false
+        
         presenter.articles = []
         presenter.cleanAllArticles()
-        savedArticlesTableView.reloadData()
+        
+        UIView.transition(with: savedArticlesTableView,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve) {self.savedArticlesTableView.reloadData() }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.infoForUserLabel.isHidden = false
+        }
     }
+    
     
     private func setTitles() {
         title = "Saved articles"

@@ -62,20 +62,20 @@ class JournalViewController: UIViewController {
     }
     
     private func setupRefreshControl() {
+        
         journalTableView.addSubview(refreshContol)
         refreshContol.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
     @objc private func refresh() {
         presenter.getJournal()
-        setDefaultButtonState()
         selectedButtonIndicies = presenter.getSavedArticles()
+        setDefaultButtonState()
         refreshContol.endRefreshing()
     }
     
     private func setDefaultButtonState() {
         selectedButtonIndicies = []
-        journalTableView.reloadData()
     }
     
     private func checkInternetConnection() {
@@ -135,7 +135,9 @@ extension JournalViewController: JournalViewProtocol {
     func succes() {
         activityIndicator.stopAnimating()
         selectedButtonIndicies = presenter.getSavedArticles()
-        journalTableView.reloadData()
+        UIView.transition(with: journalTableView,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve) { self.journalTableView.reloadData() }
     }
     
     func failure(_ error: Error) {
