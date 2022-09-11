@@ -131,6 +131,12 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
  // MARK: - JournalViewProtocol
 
 extension JournalViewController: JournalViewProtocol {
+    func showAlertWhenThereAreNoUpdates() {
+        let alert = UIAlertController(title: nil, message: "There are no new articles", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true)
+    }
     
     func succes() {
         activityIndicator.stopAnimating()

@@ -12,6 +12,7 @@ import UIKit
 protocol JournalViewProtocol: AnyObject {
     func succes()
     func failure(_ error: Error)
+    func showAlertWhenThereAreNoUpdates()
 }
 
 protocol JournalViewPresenterProtocol: AnyObject {
@@ -54,7 +55,10 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let downloadedJournal):
-                    if self.journal?.articles?.first == downloadedJournal.articles?.first { return }
+                    if self.journal?.articles?.first == downloadedJournal.articles?.first {
+                        self.view?.showAlertWhenThereAreNoUpdates()
+                        return
+                    }
                     self.journal = downloadedJournal
                     
                     if let journal = self.journal {
