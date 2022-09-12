@@ -11,8 +11,6 @@ import UIKit
 // MARK: CoreDataManagerProtocol
 
 protocol CoreDataManagerProtocol: AnyObject {
-    var persistentContainer: NSPersistentContainer { get set }
-    var context: NSManagedObjectContext { get set }
     func saveContext()
     func saveArticle(_ article: Article, with image: UIImage)
     func fetchArticles() -> [Article]

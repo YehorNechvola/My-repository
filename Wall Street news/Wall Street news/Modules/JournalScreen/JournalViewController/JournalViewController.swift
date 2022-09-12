@@ -71,7 +71,6 @@ class JournalViewController: UIViewController {
         presenter.getJournal()
         selectedButtonIndicies = presenter.getSavedArticles()
         setDefaultButtonState()
-        refreshContol.endRefreshing()
     }
     
     private func setDefaultButtonState() {
@@ -130,11 +129,8 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
  // MARK: - JournalViewProtocol
 
 extension JournalViewController: JournalViewProtocol {
-    func showAlertWhenThereAreNoUpdates() {
-        let alert = UIAlertController(title: nil, message: "There are no new articles", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .default)
-        alert.addAction(alertAction)
-        self.present(alert, animated: true)
+    func endRefreshingWhenNoUpdates() {
+        refreshContol.endRefreshing()
     }
     
     func succes() {
@@ -143,6 +139,9 @@ extension JournalViewController: JournalViewProtocol {
         UIView.transition(with: journalTableView,
                           duration: 0.5,
                           options: .transitionCrossDissolve) { self.journalTableView.reloadData() }
+        if refreshContol.isRefreshing {
+            refreshContol.endRefreshing()
+        }
     }
     
     func failure(_ error: Error) {
