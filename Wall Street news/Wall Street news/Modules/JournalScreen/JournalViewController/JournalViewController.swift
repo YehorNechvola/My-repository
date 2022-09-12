@@ -82,7 +82,6 @@ class JournalViewController: UIViewController {
         if !NetworkMonitor.shared.isConnected {
             showInternetConnectionAlert {
                 self.presenter.getJournal()
-                self.journalTableView.reloadData()
             }
         }
     }
