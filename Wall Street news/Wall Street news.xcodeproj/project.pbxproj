@@ -21,6 +21,7 @@
 		746A5281289E76B700957602 /* ArticleModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A527F289E76B700957602 /* ArticleModel+CoreDataProperties.swift */; };
 		746EDF7B2887EF84001CCA00 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746EDF7A2887EF84001CCA00 /* Router.swift */; };
 		74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74872E672881586F00D07ECB /* AssemblyBuilder.swift */; };
+		74B802F928CFB2080058298E /* JournalPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B802F828CFB2080058298E /* JournalPresenterTests.swift */; };
 		74BC319F28C5FA810057D532 /* Extension+UIVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BC319E28C5FA810057D532 /* Extension+UIVIewController.swift */; };
 		74CED4F72885AFD400907717 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CED4F62885AFD400907717 /* String+Extension.swift */; };
 		74CF50D6289533E00025EAE8 /* SceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */; };
@@ -41,6 +42,16 @@
 		74FA96A62880557C0065F7EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FA96A42880557C0065F7EB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		74B802FA28CFB2080058298E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74FA968E288055770065F7EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74FA9695288055770065F7EB;
+			remoteInfo = "Wall Street news";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		74093FF228C9F6EC0031F3F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		74253F8028C0E8CA0004DDE2 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -56,6 +67,8 @@
 		746A527F289E76B700957602 /* ArticleModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		746EDF7A2887EF84001CCA00 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		74872E672881586F00D07ECB /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		74B802F628CFB2080058298E /* WallStreetNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallStreetNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74B802F828CFB2080058298E /* JournalPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPresenterTests.swift; sourceTree = "<group>"; };
 		74BC319E28C5FA810057D532 /* Extension+UIVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIVIewController.swift"; sourceTree = "<group>"; };
 		74CED4F62885AFD400907717 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Extension.swift"; sourceTree = "<group>"; };
@@ -79,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		74B802F328CFB2080058298E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74FA9693288055770065F7EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				74F2F4E82898392800C0EE18 /* CoreDataManager */,
-				746EDF792887EF3D001CCA00 /* Routers */,
+				746EDF792887EF3D001CCA00 /* Router */,
 				74CED4F52885AFA200907717 /* ExtensionsHelpers */,
 				74872E662881584F00D07ECB /* AssemblyBuilder */,
 				742C42DF28809200001C4FDA /* NetworkService */,
@@ -166,12 +186,12 @@
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
-		746EDF792887EF3D001CCA00 /* Routers */ = {
+		746EDF792887EF3D001CCA00 /* Router */ = {
 			isa = PBXGroup;
 			children = (
 				746EDF7A2887EF84001CCA00 /* Router.swift */,
 			);
-			path = Routers;
+			path = Router;
 			sourceTree = "<group>";
 		};
 		746FC0ED28806ED9005F49B6 /* Base */ = {
@@ -210,6 +230,14 @@
 				74F2F4E92898397E00C0EE18 /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		74B802F728CFB2080058298E /* WallStreetNewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				74B802F828CFB2080058298E /* JournalPresenterTests.swift */,
+			);
+			path = WallStreetNewsTests;
 			sourceTree = "<group>";
 		};
 		74CED4F52885AFA200907717 /* ExtensionsHelpers */ = {
@@ -313,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				74FA9698288055770065F7EB /* Wall Street news */,
+				74B802F728CFB2080058298E /* WallStreetNewsTests */,
 				74FA9697288055770065F7EB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -321,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				74FA9696288055770065F7EB /* Wall Street news.app */,
+				74B802F628CFB2080058298E /* WallStreetNewsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,6 +370,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		74B802F528CFB2080058298E /* WallStreetNewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74B802FE28CFB2080058298E /* Build configuration list for PBXNativeTarget "WallStreetNewsTests" */;
+			buildPhases = (
+				74B802F228CFB2080058298E /* Sources */,
+				74B802F328CFB2080058298E /* Frameworks */,
+				74B802F428CFB2080058298E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74B802FB28CFB2080058298E /* PBXTargetDependency */,
+			);
+			name = WallStreetNewsTests;
+			productName = WallStreetNewsTests;
+			productReference = 74B802F628CFB2080058298E /* WallStreetNewsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		74FA9695288055770065F7EB /* Wall Street news */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74FA96AA2880557C0065F7EB /* Build configuration list for PBXNativeTarget "Wall Street news" */;
@@ -367,6 +415,10 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					74B802F528CFB2080058298E = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 74FA9695288055770065F7EB;
+					};
 					74FA9695288055770065F7EB = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -386,11 +438,19 @@
 			projectRoot = "";
 			targets = (
 				74FA9695288055770065F7EB /* Wall Street news */,
+				74B802F528CFB2080058298E /* WallStreetNewsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		74B802F428CFB2080058298E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74FA9694288055770065F7EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,6 +468,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		74B802F228CFB2080058298E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74B802F928CFB2080058298E /* JournalPresenterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74FA9692288055770065F7EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,6 +510,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		74B802FB28CFB2080058298E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74FA9695288055770065F7EB /* Wall Street news */;
+			targetProxy = 74B802FA28CFB2080058298E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		74FA96A42880557C0065F7EB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -454,6 +530,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		74B802FC28CFB2080058298E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LM9H2W5L8R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yegor.WallStreetNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wall Street news.app/Wall Street news";
+			};
+			name = Debug;
+		};
+		74B802FD28CFB2080058298E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LM9H2W5L8R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yegor.WallStreetNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wall Street news.app/Wall Street news";
+			};
+			name = Release;
+		};
 		74FA96A82880557C0065F7EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -629,6 +741,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		74B802FE28CFB2080058298E /* Build configuration list for PBXNativeTarget "WallStreetNewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74B802FC28CFB2080058298E /* Debug */,
+				74B802FD28CFB2080058298E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		74FA9691288055770065F7EB /* Build configuration list for PBXProject "Wall Street news" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

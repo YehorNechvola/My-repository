@@ -22,6 +22,5 @@ extension ArticleModel {
     @NSManaged public var publishedtAT: String?
     @NSManaged public var title: String?
     @NSManaged public var urlToArticle: String?
-
 }
 
