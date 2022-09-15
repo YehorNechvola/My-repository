@@ -15,9 +15,9 @@ protocol ArticleViewProtocol: AnyObject {
 
 protocol ArticleViewPresenterProtocol: AnyObject {
     init(view: ArticleViewProtocol, router: RouterProtocol, article: Article)
-    var router: RouterProtocol? { get set }
     var article: Article? { get set }
     func setArticle()
+    func readFullArticle(url: String)
 }
 
 class ArticleViewPresenter: ArticleViewPresenterProtocol {
@@ -42,5 +42,9 @@ class ArticleViewPresenter: ArticleViewPresenterProtocol {
         guard let article = article else { return }
         
         view?.setArticle(article: article)
+    }
+    
+    func readFullArticle(url: String) {
+        router?.showFullArticleViewController(by: url)
     }
 }

@@ -70,7 +70,6 @@ class JournalViewController: UIViewController {
     @objc private func refresh() {
         presenter.getJournal()
         selectedButtonIndicies = presenter.getSavedArticles()
-        setDefaultButtonState()
     }
     
     private func setDefaultButtonState() {
@@ -119,7 +118,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let journal = presenter.journal else { return }
         guard let article = journal.articles?[indexPath.row] else { return }
-        presenter.router?.showArticleViewController(article: article)
+        presenter.tapOnArticle(article: article)
     }
 }
 

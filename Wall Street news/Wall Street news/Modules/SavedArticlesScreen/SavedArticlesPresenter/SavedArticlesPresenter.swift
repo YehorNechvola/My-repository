@@ -15,11 +15,11 @@ protocol SavedArticlesViewProtocol: AnyObject {
 
 protocol SavedArticlesPresenterProtocol: AnyObject {
     init(view: SavedArticlesViewProtocol, router: RouterProtocol, coreDataManager: CoreDataManagerProtocol)
+    var articles: [Article] { get set }
     func getSavedArticles()
     func cleanAllArticles()
     func deleteArticle(by title: String)
-    var articles: [Article] { get set }
-    var router: RouterProtocol { get set }
+    func tapOnArticle(article: Article)
 }
 
 class SavedArticlesPresenter: SavedArticlesPresenterProtocol {
@@ -51,5 +51,9 @@ class SavedArticlesPresenter: SavedArticlesPresenterProtocol {
     
     func deleteArticle(by title: String) {
         coreDataManager.deleteArticle(by: title)
+    }
+    
+    func tapOnArticle(article: Article) {
+        router.showArticleViewController(article: article)
     }
 }

@@ -96,7 +96,7 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = presenter.articles[indexPath.row]
-        presenter.router.showArticleViewController(article: article)
+        presenter.tapOnArticle(article: article)
     }
 }
 

@@ -22,5 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        let restrictRotation:UIInterfaceOrientationMask = .portrait
+        return restrictRotation
+    }
 }
 

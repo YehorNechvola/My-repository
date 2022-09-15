@@ -63,6 +63,7 @@ extension FullArticleViewController: FullArticleViewProtocol {
     }
 }
 
+// MARK: - WKNavigationDelegate
 extension FullArticleViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

@@ -17,11 +17,11 @@ protocol JournalViewProtocol: AnyObject {
 
 protocol JournalViewPresenterProtocol: AnyObject {
     init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol, coreDataManager: CoreDataManagerProtocol)
+    var journal: Journal? { get set }
     func getJournal()
     func saveArticle(article: Article)
     func getSavedArticles() -> [Int]
-    var router: RouterProtocol? { get set }
-    var journal: Journal? { get set }
+    func tapOnArticle(article: Article)
 }
 
 class JournalViewPresenter: JournalViewPresenterProtocol {
@@ -54,7 +54,7 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let downloadedJournal):
-                    if self.journal?.articles?.first == downloadedJournal.articles?.first {
+                    if self.journal?.articles?.first?.title == downloadedJournal.articles?.first?.title {
                         self.view?.endRefreshingWhenNoUpdates()
                         return
                     }
@@ -108,5 +108,9 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
             index += 1
         }
         return indicies
+    }
+    
+    func tapOnArticle(article: Article) {
+        router?.showArticleViewController(article: article)
     }
 }
