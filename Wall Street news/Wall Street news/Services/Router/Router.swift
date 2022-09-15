@@ -22,7 +22,7 @@ protocol RouterMainProtocol: AnyObject {
 
 protocol RouterProtocol: RouterMainProtocol {
     func initialJournalViewController()
-    func showArticleViewController(article: Article, with image: UIImage)
+    func showArticleViewController(article: Article)
     func initialSavedArticlesViewController()
     func showFullArticleViewController(by urlToArticle: String)
 }
@@ -55,8 +55,8 @@ class Router: RouterProtocol {
         }
     }
     
-    func showArticleViewController(article: Article, with image: UIImage) {
-        if let articleViewController = assemblyBuilder?.createArticleModule(router: self, article: article, with: image) {
+    func showArticleViewController(article: Article) {
+        if let articleViewController = assemblyBuilder?.createArticleModule(router: self, article: article) {
             
             switch Router.currentNavigationController {
             case .first:

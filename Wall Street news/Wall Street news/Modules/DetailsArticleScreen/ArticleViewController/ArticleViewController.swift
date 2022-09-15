@@ -52,12 +52,13 @@ class ArticleViewController: UIViewController {
 
 extension ArticleViewController: ArticleViewProtocol {
     
-    func setArticle(article: Article, with image: UIImage) {
+    func setArticle(article: Article) {
         titleAtricleLabel.text = article.title
-        articleImageView.image = image
         descriptionLabel.text = article.description
         authorLabel.text = article.author
         guard let date = article.publishedAt?.format() else { return }
         dateLabel.text = date
+        guard let imageData = article.imageData else { return }
+        articleImageView.image = UIImage(data: imageData)
     }
 }

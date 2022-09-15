@@ -104,13 +104,11 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let journal = presenter.journal else { return UITableViewCell() }
         let article = journal.articles?[indexPath.row]
-        let image = presenter.images[indexPath.row]
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
         
         cell.delegate = self
         cell.setup(title: article?.title ?? "", date: article?.publishedAt ?? "", author: article?.author ?? "")
-        cell.setup(image: image)
+        cell.setup(imageData: article?.imageData)
         cell.setTag(by: indexPath)
         cell.handleStateOfSaveButtons(with: selectedButtonIndicies)
     
@@ -121,8 +119,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let journal = presenter.journal else { return }
         guard let article = journal.articles?[indexPath.row] else { return }
-        let image = presenter.images[indexPath.row]
-        presenter.router?.showArticleViewController(article: article, with: image)
+        presenter.router?.showArticleViewController(article: article)
     }
 }
 
@@ -157,8 +154,7 @@ extension JournalViewController: ArticleTableViewCellProtocol {
         guard let indexPath = journalTableView.indexPath(for: cell) else { return }
         guard let journal = presenter.journal else { return }
         guard let article = journal.articles?[indexPath.row] else { return }
-        let image = presenter.images[indexPath.row]
-        presenter.saveArticle(article: article, image: image)
+        presenter.saveArticle(article: article)
     }
     
     func saveTagOfPressedButton(sender: UIButton) {

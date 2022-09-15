@@ -18,11 +18,10 @@ protocol JournalViewProtocol: AnyObject {
 protocol JournalViewPresenterProtocol: AnyObject {
     init(view: JournalViewProtocol, router: RouterProtocol, networkService: NetworkServiceProtocol, coreDataManager: CoreDataManagerProtocol)
     func getJournal()
-    func saveArticle(article: Article, image: UIImage)
+    func saveArticle(article: Article)
     func getSavedArticles() -> [Int]
     var router: RouterProtocol? { get set }
     var journal: Journal? { get set }
-    var images: [UIImage] { get set }
 }
 
 class JournalViewPresenter: JournalViewPresenterProtocol {
@@ -62,7 +61,7 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
                     self.journal = downloadedJournal
                     
                     if let journal = self.journal {
-                        self.images = self.getImages(from: journal)
+                        self.setImagesToArticle(from: journal)
                         self.view?.succes()
                     }
                 case .failure(let error):
@@ -72,26 +71,26 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
         }
     }
     
-    private func getImages(from journal: Journal) -> [UIImage] {
-        var images = [UIImage]()
+    private func setImagesToArticle(from journal: Journal) {
+        guard var articlesWithImageData = journal.articles else { return }
+        var index = 0
         
-        for i in journal.articles! {
-            guard let url = URL(string: i.urlToImage ?? "") else { return images }
+        for a in articlesWithImageData {
+            guard let url = URL(string: a.urlToImage ?? "") else { return  }
             
             do {
                 let data = try Data(contentsOf: url)
-                if let image = UIImage(data: data) {
-                    images.append(image)
-                }
+                articlesWithImageData[index].imageData = data
             } catch {
                 print(error)
             }
+            index += 1
         }
-        return images
+        self.journal?.articles = articlesWithImageData
     }
     
-    func saveArticle(article: Article, image: UIImage) {
-        coreDataManager.saveArticle(article, with: image)
+    func saveArticle(article: Article) {
+        coreDataManager.saveArticle(article)
     }
     
     func getSavedArticles() -> [Int] {

@@ -12,7 +12,7 @@ import UIKit
 
 protocol CoreDataManagerProtocol: AnyObject {
     func saveContext()
-    func saveArticle(_ article: Article, with image: UIImage)
+    func saveArticle(_ article: Article)
     func fetchArticles() -> [Article]
     func cleanAllObjects()
     func deleteArticle(by title: String)
@@ -46,7 +46,7 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
     
-    func saveArticle(_ article: Article, with image: UIImage) {
+    func saveArticle(_ article: Article) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ArticleEntity")
         fetchRequest.predicate = NSPredicate(format: "title = %@ ", article.title ?? "nil")
         
@@ -67,7 +67,7 @@ class CoreDataManager: CoreDataManagerProtocol {
         articleModel.title = article.title
         articleModel.content = article.description
         articleModel.publishedtAT = article.publishedAt
-        articleModel.imageData = image.pngData()
+        articleModel.imageData = article.imageData
         articleModel.urlToArticle = article.url
         
         saveContext()

@@ -88,18 +88,15 @@ extension SavedArticlesUIViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as! ArticleTableViewCell
         cell.deleteArticleDelegate = self
         let article = presenter.articles[indexPath.row]
-        let image = UIImage(data: article.imageData ?? Data())
         cell.setup(title: article.title ?? "" , date: article.publishedAt ?? "", author: article.author ?? "")
-        cell.setup(image: image ?? UIImage())
+        cell.setup(imageData: article.imageData)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = presenter.articles[indexPath.row]
-        let image = UIImage(data: article.imageData ?? Data())
-        
-        presenter.router.showArticleViewController(article: article, with: image!)
+        presenter.router.showArticleViewController(article: article)
     }
 }
 

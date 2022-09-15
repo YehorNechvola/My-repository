@@ -11,7 +11,7 @@ import UIKit
 
 protocol AssemblyBuilderProtocol: AnyObject {
     func createJournalModule(router: RouterProtocol) -> JournalViewController
-    func createArticleModule(router: RouterProtocol, article: Article, with image: UIImage) -> ArticleViewController
+    func createArticleModule(router: RouterProtocol, article: Article) -> ArticleViewController
     func createSavedArticleModule(router: RouterProtocol) -> SavedArticlesUIViewController
     func createFullArticleModule(router: RouterProtocol, urlToArticle: String) -> FullArticleViewController
 }
@@ -29,9 +29,9 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         return view
     }
     
-    func createArticleModule(router: RouterProtocol, article: Article, with image: UIImage) -> ArticleViewController {
+    func createArticleModule(router: RouterProtocol, article: Article) -> ArticleViewController {
         let view = ArticleViewController()
-        let presenter = ArticleViewPresenter(view: view, router: router, article: article, with: image)
+        let presenter = ArticleViewPresenter(view: view, router: router, article: article)
         view.presenter = presenter
         return view
     }

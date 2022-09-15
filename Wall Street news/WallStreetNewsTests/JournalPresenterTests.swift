@@ -52,6 +52,7 @@ class JournalPresenterTests: XCTestCase {
         let assemblyBuilder = AssemblyBuilder()
         router = Router(navigationControllers: navigationControllers, assemblyBuilder: assemblyBuilder)
         coreDataManager = CoreDataManager()
+        try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
@@ -60,6 +61,7 @@ class JournalPresenterTests: XCTestCase {
         networkService = nil
         router = nil
         coreDataManager = nil
+        try super.tearDownWithError()
     }
 
     func testGetSuccesArticles() {

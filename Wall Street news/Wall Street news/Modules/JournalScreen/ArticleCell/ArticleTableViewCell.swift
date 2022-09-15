@@ -61,7 +61,9 @@ class ArticleTableViewCell: UITableViewCell {
         authorLabel.text = author
     }
     
-    func setup(image: UIImage) {
+    func setup(imageData: Data?) {
+        guard let imageData = imageData else { return }
+        let image = UIImage(data: imageData)
         articleImageView.image = image
     }
     
