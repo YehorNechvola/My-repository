@@ -33,7 +33,6 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     private var networkService: NetworkServiceProtocol
     var coreDataManager: CoreDataManagerProtocol
     var journal: Journal?
-    var images: [UIImage] = []
     
     //MARK: Initializer
     
