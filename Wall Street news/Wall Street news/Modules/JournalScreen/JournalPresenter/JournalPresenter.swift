@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 //MARK: - Protocols
 
@@ -58,11 +59,9 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
                         return
                     }
                     self.journal = downloadedJournal
+                    self.setImagesToArticle()
+                    self.view?.succes()
                     
-                    if let journal = self.journal {
-                        self.setImagesToArticle(from: journal)
-                        self.view?.succes()
-                    }
                 case .failure(let error):
                     self.view?.failure(error)
                 }
@@ -70,22 +69,14 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
         }
     }
     
-    private func setImagesToArticle(from journal: Journal) {
-        guard var articlesWithImageData = journal.articles else { return }
+    private func setImagesToArticle() {
+        guard let articles = journal?.articles else { return }
+        let imageData = self.networkService.getImagesForArticles(articles: articles)
         var index = 0
-        
-        for a in articlesWithImageData {
-            guard let url = URL(string: a.urlToImage ?? "") else { return  }
-            
-            do {
-                let data = try Data(contentsOf: url)
-                articlesWithImageData[index].imageData = data
-            } catch {
-                print(error)
-            }
+        for _ in 0...articles.count - 1 {
+            journal?.articles?[index].imageData = imageData[index]
             index += 1
         }
-        self.journal?.articles = articlesWithImageData
     }
     
     func saveArticle(article: Article) {

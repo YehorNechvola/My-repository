@@ -12,6 +12,7 @@ import UIKit
 
 protocol NetworkServiceProtocol {
     func getJournal(url: String, completion: @escaping(Result <Journal, Error>) -> Void)
+    func getImagesForArticles(articles: [Article]) -> [Data]
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -42,5 +43,22 @@ class NetworkService: NetworkServiceProtocol {
                 print(error)
             }
         }.resume()
+    }
+    func getImagesForArticles(articles: [Article]) -> [Data] {
+        let queue = DispatchQueue(label: "imagesQueue", qos: .userInteractive, attributes: .concurrent)
+        var images = [Data]()
+        queue.sync {
+            articles.forEach { article in
+                guard let urlToImage = article.urlToImage else { return }
+                guard let url = URL(string: urlToImage) else { return }
+                do {
+                    let imageData = try Data(contentsOf: url)
+                    images.append(imageData)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        return images
     }
 }
