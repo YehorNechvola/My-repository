@@ -20,6 +20,8 @@ class MockView: JournalViewProtocol {
 }
 
 class MockNetworService: NetworkServiceProtocol {
+    
+    
     var journal: Journal!
     
     init() {}
@@ -35,6 +37,10 @@ class MockNetworService: NetworkServiceProtocol {
             let error = NSError(domain: "", code: 13, userInfo: nil)
             completion(.failure(error))
         }
+    }
+    
+    func getImagesForArticles(articles: [Article]) -> [Data] {
+        return [Data]()
     }
 }
 

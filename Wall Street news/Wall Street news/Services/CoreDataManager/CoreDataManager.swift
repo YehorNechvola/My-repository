@@ -6,7 +6,7 @@
 //
 
 import CoreData
-import UIKit
+import Foundation
 
 // MARK: CoreDataManagerProtocol
 
@@ -69,7 +69,6 @@ class CoreDataManager: CoreDataManagerProtocol {
         articleModel.publishedtAT = article.publishedAt
         articleModel.imageData = article.imageData
         articleModel.urlToArticle = article.url
-        
         saveContext()
     }
     

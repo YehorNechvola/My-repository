@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import UIKit
 
 //MARK: - NetworkServiceProtocol
 
 protocol NetworkServiceProtocol {
     func getJournal(url: String, completion: @escaping(Result <Journal, Error>) -> Void)
-    func getImagesForArticles(articles: [Article]) -> [Data]
+    func getImagesForArticles(articles: [Article], completion: @escaping ([String: Data]) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -44,21 +43,28 @@ class NetworkService: NetworkServiceProtocol {
             }
         }.resume()
     }
-    func getImagesForArticles(articles: [Article]) -> [Data] {
-        let queue = DispatchQueue(label: "imagesQueue", qos: .userInteractive, attributes: .concurrent)
-        var images = [Data]()
-        queue.sync {
-            articles.forEach { article in
-                guard let urlToImage = article.urlToImage else { return }
-                guard let url = URL(string: urlToImage) else { return }
+    
+    func getImagesForArticles(articles: [Article], completion: @escaping ([String: Data]) -> Void) {
+        var imagesData = [String: Data]()
+        let dispatchGroup = DispatchGroup()
+        
+        articles.forEach { article in
+            guard let stringUrl = article.urlToImage else { return }
+            
+            guard let url = URL(string: stringUrl) else { return }
+            dispatchGroup.enter()
+            DispatchQueue.global(qos: .userInteractive).async {
                 do {
-                    let imageData = try Data(contentsOf: url)
-                    images.append(imageData)
-                } catch {
+                    let data = try Data(contentsOf: url)
+                    imagesData[stringUrl] = data
+                } catch (let error) {
                     print(error)
                 }
+                dispatchGroup.leave()
             }
         }
-        return images
+        dispatchGroup.notify(queue: .main) {
+            completion(imagesData)
+        }
     }
 }

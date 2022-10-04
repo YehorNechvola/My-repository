@@ -5,7 +5,7 @@
 //  Created by Егор on 14.07.2022.
 //
 
-import UIKit
+import Foundation
 import Network
 
 //MARK: - Protocols
@@ -59,8 +59,9 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
                         return
                     }
                     self.journal = downloadedJournal
-                    self.setImagesToArticle()
                     self.view?.succes()
+                    self.setImagesToArticle()
+                    
                     
                 case .failure(let error):
                     self.view?.failure(error)
@@ -71,11 +72,17 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     
     private func setImagesToArticle() {
         guard let articles = journal?.articles else { return }
-        let imageData = self.networkService.getImagesForArticles(articles: articles)
-        var index = 0
-        for _ in 0...articles.count - 1 {
-            journal?.articles?[index].imageData = imageData[index]
-            index += 1
+        networkService.getImagesForArticles(articles: articles) { [weak self] data in
+            var index = 0
+            for a in articles {
+                for k in data {
+                    if a.urlToImage == k.key {
+                        self?.journal?.articles![index].imageData = k.value
+                    }
+                }
+                index += 1
+            }
+            self?.view?.succes()
         }
     }
     

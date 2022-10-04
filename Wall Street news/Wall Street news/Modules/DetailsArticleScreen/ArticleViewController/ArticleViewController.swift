@@ -26,7 +26,7 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Details"
+        setDefaultUI()
         presenter.setArticle()
     }
     
@@ -37,6 +37,11 @@ class ArticleViewController: UIViewController {
         descriptionLabel.sizeToFit()
         authorLabel.sizeToFit()
         dateLabel.sizeToFit()
+    }
+    
+    private func setDefaultUI() {
+        title = "Details"
+        articleImageView.image = UIImage(named: "waitingIcon")
     }
     
     // MARK: - Actions

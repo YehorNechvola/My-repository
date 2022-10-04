@@ -42,6 +42,8 @@ class ArticleTableViewCell: UITableViewCell {
         
         setupUI()
         setupRemoveButton()
+        articleImageView.backgroundColor = .placeholderText
+        articleImageView.image = UIImage(named: "waitingIcon")
     }
     
     // MARK: - Actions
