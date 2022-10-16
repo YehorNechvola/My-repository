@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7407C5B528FAA660003A3816 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7407C5B428FAA660003A3816 /* ViewController+Extension.swift */; };
 		74093FF328C9F6EC0031F3F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74093FF228C9F6EC0031F3F4 /* Constants.swift */; };
 		74253F8128C0E8CA0004DDE2 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74253F8028C0E8CA0004DDE2 /* NetworkMonitor.swift */; };
 		742C42CD28807D86001C4FDA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C42CC28807D86001C4FDA /* Article.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7407C5B428FAA660003A3816 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		74093FF228C9F6EC0031F3F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		74253F8028C0E8CA0004DDE2 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		742C42CC28807D86001C4FDA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				74CED4F62885AFD400907717 /* String+Extension.swift */,
 				74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */,
 				74BC319E28C5FA810057D532 /* Extension+UIVIewController.swift */,
+				7407C5B428FAA660003A3816 /* ViewController+Extension.swift */,
 			);
 			path = ExtensionsHelpers;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				74DF6FC2288450B100C5627A /* ArticleViewController.swift in Sources */,
 				74CF50E82895594A0025EAE8 /* FullArticlePresenter.swift in Sources */,
 				74CF50DF2895377E0025EAE8 /* SavedArticlesPresenter.swift in Sources */,
+				7407C5B528FAA660003A3816 /* ViewController+Extension.swift in Sources */,
 				746EDF7B2887EF84001CCA00 /* Router.swift in Sources */,
 				74FA969A288055770065F7EB /* AppDelegate.swift in Sources */,
 				74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */,

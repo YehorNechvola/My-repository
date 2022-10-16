@@ -34,8 +34,8 @@ class SavedArticlesUIViewController: UIViewController {
         
         Router.currentNavigationController = .second
         presenter.getSavedArticles()
-        savedArticlesTableView.reloadData()
         showHideInfoLabelForUser()
+        reloadDataIfNeeded(in: savedArticlesTableView)
     }
     
     // MARK: - Methods
@@ -58,7 +58,7 @@ class SavedArticlesUIViewController: UIViewController {
         
         UIView.transition(with: savedArticlesTableView,
                           duration: 0.5,
-                          options: .transitionCrossDissolve) {self.savedArticlesTableView.reloadData() }
+                          options: .transitionCrossDissolve) { self.savedArticlesTableView.reloadData() }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.infoForUserLabel.isHidden = false
@@ -116,7 +116,7 @@ extension SavedArticlesUIViewController: DeleteArticleInTableViewCellProtocol {
     func deleteArticle(in cell: ArticleTableViewCell) {
         guard let indexPath = savedArticlesTableView.indexPath(for: cell) else { return }
         let article = presenter.articles[indexPath.row]
-        presenter.deleteArticle(by: article.title ?? "no mathes")
+        presenter.deleteArticle(by: article.title ?? "no matches")
         presenter.getSavedArticles()
         savedArticlesTableView.deleteRows(at: [indexPath], with: .left)
         showHideInfoLabelForUser()

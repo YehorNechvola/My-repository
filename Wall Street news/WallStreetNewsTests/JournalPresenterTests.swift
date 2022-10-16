@@ -21,7 +21,6 @@ class MockView: JournalViewProtocol {
 
 class MockNetworService: NetworkServiceProtocol {
     
-    
     var journal: Journal!
     
     init() {}
@@ -41,6 +40,10 @@ class MockNetworService: NetworkServiceProtocol {
     
     func getImagesForArticles(articles: [Article]) -> [Data] {
         return [Data]()
+    }
+    
+    func getImagesForArticles(articles: [Article], completion: @escaping ([String : Data]) -> Void) {
+        
     }
 }
 

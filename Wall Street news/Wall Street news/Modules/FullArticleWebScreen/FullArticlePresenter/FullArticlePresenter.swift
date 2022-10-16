@@ -5,7 +5,7 @@
 //  Created by Егор on 30.07.2022.
 //
 
-import Foundation
+import UIKit
 
 //MARK: - Protocols
 
@@ -14,9 +14,10 @@ protocol FullArticleViewProtocol: AnyObject {
 }
 
 protocol FullArticlePresenterProtocol: AnyObject {
-    var router: RouterProtocol { get set }
     init(view: FullArticleViewProtocol, router: RouterProtocol, urlToArticle: String)
     var urlToArticle: String? { get set }
+    func doneButtonPressed()
+    func showBadInternetConnectionAlert(in viewController: UIViewController)
 }
 
 class FullArticlePresenter: FullArticlePresenterProtocol {
@@ -24,7 +25,7 @@ class FullArticlePresenter: FullArticlePresenterProtocol {
     // MARK: - Properties
     
     weak var view: FullArticleViewProtocol?
-    var router: RouterProtocol
+    private var router: RouterProtocol
     var urlToArticle: String?
     
     // MARK: - Initializer
@@ -33,5 +34,17 @@ class FullArticlePresenter: FullArticlePresenterProtocol {
         self.view = view
         self.router = router
         self.urlToArticle = urlToArticle
+    }
+    
+    // MARK: - Methods
+    
+    func doneButtonPressed() {
+        router.popFullArticleViewController()
+    }
+    
+    func showBadInternetConnectionAlert(in viewController: UIViewController) {
+        if !NetworkMonitor.shared.isConnected {
+            viewController.showInternetConnectionAlert(completion: nil)
+        }
     }
 }

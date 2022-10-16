@@ -18,7 +18,7 @@ class FullArticleViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet private weak var articleWebViev: WKWebView!
-    
+
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -31,22 +31,24 @@ class FullArticleViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !NetworkMonitor.shared.isConnected {
-            showInternetConnectionAlert {
-                print("not connection")
-            }
-        }
+        presenter.showBadInternetConnectionAlert(in: self)
         setupActivityIndicator()
     }
     
     // MARK: - Methods
     
-    func setupActivityIndicator() {
+    private func setupActivityIndicator() {
         view.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.startAnimating()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction private func doneButtonPressed(_ sender: UIButton) {
+        presenter.doneButtonPressed()
     }
 }
 
@@ -64,6 +66,7 @@ extension FullArticleViewController: FullArticleViewProtocol {
 }
 
 // MARK: - WKNavigationDelegate
+
 extension FullArticleViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

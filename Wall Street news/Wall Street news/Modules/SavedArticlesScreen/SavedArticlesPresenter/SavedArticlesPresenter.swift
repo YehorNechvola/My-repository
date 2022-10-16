@@ -27,8 +27,8 @@ class SavedArticlesPresenter: SavedArticlesPresenterProtocol {
     // MARK: - Properties
     
     weak var view: SavedArticlesViewProtocol?
-    var router: RouterProtocol
-    var coreDataManager: CoreDataManagerProtocol
+    private var router: RouterProtocol
+    private var coreDataManager: CoreDataManagerProtocol
     var articles: [Article] = []
     
     // MARK: - Inializer
@@ -47,10 +47,12 @@ class SavedArticlesPresenter: SavedArticlesPresenterProtocol {
     
     func cleanAllArticles() {
         coreDataManager.cleanAllObjects()
+        CasesToReloadTableView.stateOfAction = .deleteArticle
     }
     
     func deleteArticle(by title: String) {
         coreDataManager.deleteArticle(by: title)
+        CasesToReloadTableView.stateOfAction = .deleteArticle
     }
     
     func tapOnArticle(article: Article) {

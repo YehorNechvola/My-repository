@@ -20,23 +20,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-TT-iFI">
-                    <rect key="frame" x="10" y="44" width="394" height="818"/>
+                    <rect key="frame" x="10" y="94.5" width="394" height="767.5"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNe-fF-LyM">
+                    <rect key="frame" x="0.0" y="54" width="58.5" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                    <connections>
+                        <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="QjU-za-4UU"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UAb-TT-iFI" secondAttribute="bottom" id="0fn-t7-QcC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UAb-TT-iFI" secondAttribute="trailing" constant="10" id="O0d-KJ-OqV"/>
-                <constraint firstItem="UAb-TT-iFI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WOf-Ss-8gq"/>
+                <constraint firstItem="VNe-fF-LyM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="WIk-ik-Nlf"/>
+                <constraint firstItem="UAb-TT-iFI" firstAttribute="firstBaseline" secondItem="VNe-fF-LyM" secondAttribute="firstBaseline" constant="20" id="hBm-oj-dX1"/>
+                <constraint firstItem="VNe-fF-LyM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jix-kd-Mio"/>
                 <constraint firstItem="UAb-TT-iFI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="yno-Rr-EmQ"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="66"/>
+            <point key="canvasLocation" x="131.8840579710145" y="65.625"/>
         </view>
     </objects>
     <resources>

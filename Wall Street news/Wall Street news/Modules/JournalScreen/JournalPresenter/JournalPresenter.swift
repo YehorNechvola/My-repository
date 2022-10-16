@@ -6,7 +6,14 @@
 //
 
 import Foundation
-import Network
+
+enum CasesToReloadTableView {
+    case saveArticle
+    case deleteArticle
+    case withoutChanges
+    
+    static var stateOfAction: CasesToReloadTableView = .withoutChanges
+}
 
 //MARK: - Protocols
 
@@ -30,10 +37,11 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     //MARK: - Properties
     
     weak var view: JournalViewProtocol?
-    var router: RouterProtocol?
+    private var router: RouterProtocol?
     private var networkService: NetworkServiceProtocol
     var coreDataManager: CoreDataManagerProtocol
     var journal: Journal?
+    var isFirstDownload = true
     
     //MARK: Initializer
     
@@ -59,10 +67,14 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
                         return
                     }
                     self.journal = downloadedJournal
-                    self.view?.succes()
+                    
+                    if self.isFirstDownload {
+                        self.view?.succes()
+                        self.isFirstDownload = false
+                    }
+                    
                     self.setImagesToArticle()
-                    
-                    
+        
                 case .failure(let error):
                     self.view?.failure(error)
                 }
@@ -88,6 +100,7 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     
     func saveArticle(article: Article) {
         coreDataManager.saveArticle(article)
+        CasesToReloadTableView.stateOfAction = .saveArticle
     }
     
     func getSavedArticles() -> [Int] {

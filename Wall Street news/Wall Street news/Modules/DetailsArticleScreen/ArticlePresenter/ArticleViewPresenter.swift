@@ -25,7 +25,7 @@ class ArticleViewPresenter: ArticleViewPresenterProtocol {
     // MARK: - Properties
     
     weak var view: ArticleViewProtocol?
-    var router: RouterProtocol?
+    private var router: RouterProtocol?
     var article: Article?
     
     // MARK: - Initializer

@@ -25,17 +25,18 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
         checkInternetConnection()
         setupActivityIndicator()
         setupRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        selectedButtonIndicies = presenter.getSavedArticles()
         Router.currentNavigationController = .first
-        setupTableView()
-        journalTableView.reloadData()
+        selectedButtonIndicies = presenter.getSavedArticles()
+        reloadDataIfNeeded(in: journalTableView)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

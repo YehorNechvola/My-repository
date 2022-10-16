@@ -15,6 +15,7 @@ enum NavigationControllers {
 // MARK: - Protocols
 
 protocol RouterMainProtocol: AnyObject {
+    var mainNavigationController: UINavigationController? { get set }
     var firstNavigationController: UINavigationController? { get set }
     var secondNavigationController: UINavigationController? { get set }
     var assemblyBuilder: AssemblyBuilderProtocol? { get set }
@@ -25,6 +26,7 @@ protocol RouterProtocol: RouterMainProtocol {
     func showArticleViewController(article: Article)
     func initialSavedArticlesViewController()
     func showFullArticleViewController(by urlToArticle: String)
+    func popFullArticleViewController()
 }
 
 class Router: RouterProtocol {
@@ -33,18 +35,24 @@ class Router: RouterProtocol {
     
     static var currentNavigationController: NavigationControllers = .first
     
+    var mainNavigationController: UINavigationController?
     var firstNavigationController: UINavigationController?
     var secondNavigationController: UINavigationController?
     var assemblyBuilder: AssemblyBuilderProtocol?
     
     //MARK: - Initializer
     
-    init(navigationControllers: [UINavigationController], assemblyBuilder: AssemblyBuilderProtocol) {
+    init(mainNavigationController: UINavigationController,
+         navigationControllers: [UINavigationController],
+         assemblyBuilder: AssemblyBuilderProtocol) {
+        
+        self.mainNavigationController = mainNavigationController
+        self.assemblyBuilder = assemblyBuilder
         firstNavigationController = navigationControllers[0]
         secondNavigationController = navigationControllers[1]
         firstNavigationController?.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 0)
         secondNavigationController?.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        self.assemblyBuilder = assemblyBuilder
+        self.mainNavigationController?.isNavigationBarHidden = true
     }
     
     //MARK: - Methods
@@ -74,15 +82,12 @@ class Router: RouterProtocol {
     }
     
     func showFullArticleViewController(by urlToArticle: String) {
-        
         if let fullArticleViewController = assemblyBuilder?.createFullArticleModule(router: self, urlToArticle: urlToArticle) {
-            
-            switch Router.currentNavigationController {
-            case .first:
-                firstNavigationController?.pushViewController(fullArticleViewController, animated: true)
-            case .second:
-                secondNavigationController?.pushViewController(fullArticleViewController, animated: true)
-            }
+            mainNavigationController?.pushViewController(fullArticleViewController, animated: true)
         }
+    }
+    
+    func popFullArticleViewController() {
+        mainNavigationController?.popViewController(animated: true)
     }
 }
