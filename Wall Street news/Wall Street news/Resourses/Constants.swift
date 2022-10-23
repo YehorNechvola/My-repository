@@ -1,9 +1,4 @@
-//
-//  Constants.swift
-//  Wall Street news
-//
-//  Created by Егор on 08.09.2022.
-//
+
 
 import UIKit
 

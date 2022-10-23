@@ -1,9 +1,4 @@
-//
-//  JournalRouter.swift
-//  Wall Street news
-//
-//  Created by Егор on 20.07.2022.
-//
+
 
 import UIKit
 
@@ -26,7 +21,7 @@ protocol RouterProtocol: RouterMainProtocol {
     func showArticleViewController(article: Article)
     func initialSavedArticlesViewController()
     func showFullArticleViewController(by urlToArticle: String)
-    func popFullArticleViewController()
+    func popViewController()
 }
 
 class Router: RouterProtocol {
@@ -87,7 +82,7 @@ class Router: RouterProtocol {
         }
     }
     
-    func popFullArticleViewController() {
+    func popViewController() {
         mainNavigationController?.popViewController(animated: true)
     }
 }

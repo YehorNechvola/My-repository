@@ -1,9 +1,4 @@
-//
-//  FullArticleViewController.swift
-//  Wall Street news
-//
-//  Created by Егор on 30.07.2022.
-//
+
 
 import UIKit
 import WebKit
@@ -18,13 +13,13 @@ class FullArticleViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet private weak var articleWebViev: WKWebView!
-
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        articleWebViev.navigationDelegate = self
+        addPopGestureRecognizer()
         showFullArticle()
     }
     
@@ -45,6 +40,11 @@ class FullArticleViewController: UIViewController {
         activityIndicator.startAnimating()
     }
     
+    private func addPopGestureRecognizer() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
     // MARK: - Actions
     
     @IBAction private func doneButtonPressed(_ sender: UIButton) {
@@ -57,6 +57,7 @@ class FullArticleViewController: UIViewController {
 extension FullArticleViewController: FullArticleViewProtocol {
     
     func showFullArticle() {
+        articleWebViev.navigationDelegate = self
         articleWebViev.backgroundColor = .clear
         guard let stringUrl = presenter.urlToArticle else { return }
         guard let urlToArticle = URL(string: stringUrl) else { return }
@@ -71,5 +72,14 @@ extension FullArticleViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         activityIndicator.stopAnimating()
+    }
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension FullArticleViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

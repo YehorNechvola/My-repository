@@ -20,16 +20,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-TT-iFI">
-                    <rect key="frame" x="10" y="94.5" width="394" height="767.5"/>
+                    <rect key="frame" x="10" y="95" width="394" height="767"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNe-fF-LyM">
-                    <rect key="frame" x="0.0" y="54" width="58.5" height="31"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNe-fF-LyM">
+                    <rect key="frame" x="0.0" y="54" width="75" height="32"/>
                     <buttonConfiguration key="configuration" style="plain" title="Done"/>
                     <connections>
                         <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="QjU-za-4UU"/>

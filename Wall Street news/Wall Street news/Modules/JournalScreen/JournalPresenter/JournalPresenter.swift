@@ -1,9 +1,4 @@
-//
-//  JournalPresenter.swift
-//  Wall Street news
-//
-//  Created by Егор on 14.07.2022.
-//
+
 
 import Foundation
 
@@ -39,9 +34,9 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
     weak var view: JournalViewProtocol?
     private var router: RouterProtocol?
     private var networkService: NetworkServiceProtocol
-    var coreDataManager: CoreDataManagerProtocol
+    private var coreDataManager: CoreDataManagerProtocol
     var journal: Journal?
-    var isFirstDownload = true
+    private var isFirstDownload = true
     
     //MARK: Initializer
     
@@ -72,9 +67,8 @@ class JournalViewPresenter: JournalViewPresenterProtocol {
                         self.view?.succes()
                         self.isFirstDownload = false
                     }
-                    
                     self.setImagesToArticle()
-        
+                    
                 case .failure(let error):
                     self.view?.failure(error)
                 }

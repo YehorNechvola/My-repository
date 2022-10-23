@@ -1,9 +1,4 @@
-//
-//  SceneDelegate.swift
-//  Wall Street news
-//
-//  Created by Егор on 14.07.2022.
-//
+
 
 import UIKit
 

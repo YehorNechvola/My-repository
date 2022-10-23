@@ -1,9 +1,4 @@
-//
-//  ArticleViewController.swift
-//  Wall Street news
-//
-//  Created by Егор on 17.07.2022.
-//
+
 
 import UIKit
 

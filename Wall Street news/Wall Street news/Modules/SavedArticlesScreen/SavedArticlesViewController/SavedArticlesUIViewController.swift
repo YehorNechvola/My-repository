@@ -1,9 +1,4 @@
-//
-//  SavedArticlesUIViewController.swift
-//  Wall Street news
-//
-//  Created by Егор on 30.07.2022.
-//
+
 
 import UIKit
 
@@ -17,7 +12,6 @@ class SavedArticlesUIViewController: UIViewController {
     
     @IBOutlet private weak var savedArticlesTableView: UITableView!
     @IBOutlet private weak var infoForUserLabel: UILabel!
-    
     
     // MARK: - LifeCycle
     
@@ -44,6 +38,7 @@ class SavedArticlesUIViewController: UIViewController {
         savedArticlesTableView.register(ArticleTableViewCell.nib, forCellReuseIdentifier: ArticleTableViewCell.identifier)
         savedArticlesTableView.delegate = self
         savedArticlesTableView.dataSource = self
+        savedArticlesTableView.reloadData()
     }
     
     private func createRightBarButtonItem() {

@@ -1,9 +1,4 @@
-//
-//  ViewController+Extension.swift
-//  Wall Street news
-//
-//  Created by Егор on 15.10.2022.
-//
+
 
 import UIKit
 
@@ -12,7 +7,8 @@ import UIKit
 extension UIViewController {
     
     func reloadDataIfNeeded(in tableview: UITableView) {
-        if CasesToReloadTableView.stateOfAction == .deleteArticle {
+        
+        if CasesToReloadTableView.stateOfAction != .withoutChanges {
             tableview.reloadData()
             CasesToReloadTableView.stateOfAction = .withoutChanges
         }

@@ -1,9 +1,3 @@
-//
-//  FullArticlePresenter.swift
-//  Wall Street news
-//
-//  Created by Егор on 30.07.2022.
-//
 
 import UIKit
 
@@ -39,7 +33,7 @@ class FullArticlePresenter: FullArticlePresenterProtocol {
     // MARK: - Methods
     
     func doneButtonPressed() {
-        router.popFullArticleViewController()
+        router.popViewController()
     }
     
     func showBadInternetConnectionAlert(in viewController: UIViewController) {

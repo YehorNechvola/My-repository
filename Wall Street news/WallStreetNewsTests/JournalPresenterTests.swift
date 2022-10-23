@@ -1,9 +1,4 @@
-//
-//  WallStreetNewsTests.swift
-//  WallStreetNewsTests
-//
-//  Created by Егор on 12.09.2022.
-//
+
 
 import XCTest
 @testable import Wall_Street_news
@@ -57,9 +52,10 @@ class JournalPresenterTests: XCTestCase {
     var journal: Journal!
     
     override func setUpWithError() throws {
+        let mainNavController = UINavigationController()
         let navigationControllers = [UINavigationController(), UINavigationController()]
         let assemblyBuilder = AssemblyBuilder()
-        router = Router(navigationControllers: navigationControllers, assemblyBuilder: assemblyBuilder)
+        router = Router(mainNavigationController: mainNavController, navigationControllers: navigationControllers, assemblyBuilder: assemblyBuilder)
         coreDataManager = CoreDataManager()
         try super.setUpWithError()
     }
