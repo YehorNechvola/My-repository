@@ -12,6 +12,8 @@ protocol FullArticlePresenterProtocol: AnyObject {
     var urlToArticle: String? { get set }
     func doneButtonPressed()
     func showBadInternetConnectionAlert(in viewController: UIViewController)
+    func openArticleInSafari()
+    func shareLinkOfArticle(viewController: FullArticleViewController)
 }
 
 class FullArticlePresenter: FullArticlePresenterProtocol {
@@ -40,5 +42,19 @@ class FullArticlePresenter: FullArticlePresenterProtocol {
         if !NetworkMonitor.shared.isConnected {
             viewController.showInternetConnectionAlert(completion: nil)
         }
+    }
+    
+    func openArticleInSafari() {
+        guard let stringUrl = urlToArticle else { return }
+        guard let url = URL(string: stringUrl) else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    func shareLinkOfArticle(viewController: FullArticleViewController) {
+        guard let stringUrl = urlToArticle else { return }
+        guard let url = URL(string: stringUrl) else { return }
+        let activityViewController = UIActivityViewController(activityItems: [url],
+                                                              applicationActivities: nil)
+        viewController.present(activityViewController, animated: true)
     }
 }

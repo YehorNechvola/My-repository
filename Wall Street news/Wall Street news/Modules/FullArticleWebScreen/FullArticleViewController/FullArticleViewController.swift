@@ -21,6 +21,7 @@ class FullArticleViewController: UIViewController {
         
         addPopGestureRecognizer()
         showFullArticle()
+        articleWebViev.scrollView.subviews.forEach { $0.isUserInteractionEnabled = false }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +50,14 @@ class FullArticleViewController: UIViewController {
     
     @IBAction private func doneButtonPressed(_ sender: UIButton) {
         presenter.doneButtonPressed()
+    }
+    
+    @IBAction private func safariButtonPressed(_ sender: UIButton) {
+        presenter.openArticleInSafari()
+    }
+    
+    @IBAction private func shareButtonPressed(_ sender: UIButton) {
+        presenter.shareLinkOfArticle(viewController: self)
     }
 }
 
