@@ -9,11 +9,11 @@ protocol FullArticleViewProtocol: AnyObject {
 
 protocol FullArticlePresenterProtocol: AnyObject {
     init(view: FullArticleViewProtocol, router: RouterProtocol, urlToArticle: String)
-    var urlToArticle: String? { get set }
     func doneButtonPressed()
     func showBadInternetConnectionAlert(in viewController: UIViewController)
     func openArticleInSafari()
     func shareLinkOfArticle(viewController: FullArticleViewController)
+    func createRequest(completion: (URLRequest) -> Void)
 }
 
 class FullArticlePresenter: FullArticlePresenterProtocol {
@@ -22,7 +22,7 @@ class FullArticlePresenter: FullArticlePresenterProtocol {
     
     weak var view: FullArticleViewProtocol?
     private var router: RouterProtocol
-    var urlToArticle: String?
+    private var urlToArticle: String?
     
     // MARK: - Initializer
     
@@ -56,5 +56,12 @@ class FullArticlePresenter: FullArticlePresenterProtocol {
         let activityViewController = UIActivityViewController(activityItems: [url],
                                                               applicationActivities: nil)
         viewController.present(activityViewController, animated: true)
+    }
+    
+    func createRequest(completion: (URLRequest) -> Void) {
+        guard let urlToArticle = urlToArticle else { return }
+        guard let url = URL(string: urlToArticle) else { return }
+        let request = URLRequest(url: url)
+        completion(request)
     }
 }

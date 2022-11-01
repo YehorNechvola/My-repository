@@ -22,7 +22,9 @@
 		746A5281289E76B700957602 /* ArticleModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A527F289E76B700957602 /* ArticleModel+CoreDataProperties.swift */; };
 		746EDF7B2887EF84001CCA00 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746EDF7A2887EF84001CCA00 /* Router.swift */; };
 		74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74872E672881586F00D07ECB /* AssemblyBuilder.swift */; };
-		74B802F928CFB2080058298E /* JournalPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B802F828CFB2080058298E /* JournalPresenterTests.swift */; };
+		74AB4AE5290DC37E00CA96A9 /* MockNetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B802F828CFB2080058298E /* MockNetworkServiceTests.swift */; };
+		74AB4AE6290DC38200CA96A9 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AB4AE1290D36BD00CA96A9 /* CoreDataManagerTests.swift */; };
+		74AB4AEA290DCDC000CA96A9 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B6B8290A99C6006C3D30 /* NetworkServiceTests.swift */; };
 		74BC319F28C5FA810057D532 /* Extension+UIVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BC319E28C5FA810057D532 /* Extension+UIVIewController.swift */; };
 		74CED4F72885AFD400907717 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CED4F62885AFD400907717 /* String+Extension.swift */; };
 		74CF50D6289533E00025EAE8 /* SceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */; };
@@ -65,12 +67,14 @@
 		742C42DA2880870F001C4FDA /* JournalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPresenter.swift; sourceTree = "<group>"; };
 		742C42DD28808889001C4FDA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		742C42E02880921F001C4FDA /* URLAdresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLAdresses.swift; sourceTree = "<group>"; };
+		7449B6B8290A99C6006C3D30 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		746A527E289E76B700957602 /* ArticleModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		746A527F289E76B700957602 /* ArticleModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		746EDF7A2887EF84001CCA00 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		74872E672881586F00D07ECB /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		74AB4AE1290D36BD00CA96A9 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		74B802F628CFB2080058298E /* WallStreetNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallStreetNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		74B802F828CFB2080058298E /* JournalPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPresenterTests.swift; sourceTree = "<group>"; };
+		74B802F828CFB2080058298E /* MockNetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServiceTests.swift; sourceTree = "<group>"; };
 		74BC319E28C5FA810057D532 /* Extension+UIVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIVIewController.swift"; sourceTree = "<group>"; };
 		74CED4F62885AFD400907717 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Extension.swift"; sourceTree = "<group>"; };
@@ -111,6 +115,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		740D1201290FF3FF00FEC451 /* MockNetworkServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				74B802F828CFB2080058298E /* MockNetworkServiceTests.swift */,
+			);
+			path = MockNetworkServiceTests;
+			sourceTree = "<group>";
+		};
+		740D1206290FF54000FEC451 /* CoreDataManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				74AB4AE1290D36BD00CA96A9 /* CoreDataManagerTests.swift */,
+			);
+			path = CoreDataManagerTests;
+			sourceTree = "<group>";
+		};
+		740D1207290FF55C00FEC451 /* NetworkServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				7449B6B8290A99C6006C3D30 /* NetworkServiceTests.swift */,
+			);
+			path = NetworkServiceTests;
+			sourceTree = "<group>";
+		};
 		742C42CA28807269001C4FDA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +265,9 @@
 		74B802F728CFB2080058298E /* WallStreetNewsTests */ = {
 			isa = PBXGroup;
 			children = (
-				74B802F828CFB2080058298E /* JournalPresenterTests.swift */,
+				740D1201290FF3FF00FEC451 /* MockNetworkServiceTests */,
+				740D1206290FF54000FEC451 /* CoreDataManagerTests */,
+				740D1207290FF55C00FEC451 /* NetworkServiceTests */,
 			);
 			path = WallStreetNewsTests;
 			sourceTree = "<group>";
@@ -475,7 +505,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74B802F928CFB2080058298E /* JournalPresenterTests.swift in Sources */,
+				74AB4AE5290DC37E00CA96A9 /* MockNetworkServiceTests.swift in Sources */,
+				74AB4AEA290DCDC000CA96A9 /* NetworkServiceTests.swift in Sources */,
+				74AB4AE6290DC38200CA96A9 /* CoreDataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

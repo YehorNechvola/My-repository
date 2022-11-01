@@ -34,14 +34,17 @@ class NetworkService: NetworkServiceProtocol {
                 completion(.failure(error))
                 return
             }
-            guard let data = data else { return }
+            guard let data = data else {
+                completion(.failure(error!))
+                return
+                
+            }
             
             do {
                 let journal = try self.decoder.decode(Journal.self, from: data)
                 completion(.success(journal))
             } catch {
                 completion(.failure(error))
-                print(error)
             }
         }.resume()
     }

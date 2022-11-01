@@ -3,16 +3,7 @@
 import XCTest
 @testable import Wall_Street_news
 
-class MockView: JournalViewProtocol {
-    func succes() {
-    }
-    
-    func failure(_ error: Error) {
-    }
-    
-    func endRefreshingWhenNoUpdates() {
-    }
-}
+// MARK: - MockNetworkService
 
 class MockNetworService: NetworkServiceProtocol {
     
@@ -33,39 +24,29 @@ class MockNetworService: NetworkServiceProtocol {
         }
     }
     
-    func getImagesForArticles(articles: [Article]) -> [Data] {
-        return [Data]()
-    }
-    
-    func getImagesForArticles(articles: [Article], completion: @escaping ([String : Data]) -> Void) {
-        
+    func getImagesForArticles(articles: [Article], completion: @escaping ([String: Data]) -> Void) {
+        var imagesData = [String: Data]()
+        for a in articles {
+            
+            imagesData[a.urlToImage!] = Data()
+        }
+        completion(imagesData)
     }
 }
 
-class JournalPresenterTests: XCTestCase {
+// MARK: - MockNetworkServiceTests
+
+class MockNetworkServiceTests: XCTestCase {
     
-    var view: MockView!
-    var presenter: JournalViewPresenter!
     var networkService: NetworkServiceProtocol!
-    var router: RouterProtocol!
-    var coreDataManager: CoreDataManagerProtocol!
-    var journal: Journal!
     
     override func setUpWithError() throws {
-        let mainNavController = UINavigationController()
-        let navigationControllers = [UINavigationController(), UINavigationController()]
-        let assemblyBuilder = AssemblyBuilder()
-        router = Router(mainNavigationController: mainNavController, navigationControllers: navigationControllers, assemblyBuilder: assemblyBuilder)
-        coreDataManager = CoreDataManager()
+        
         try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
-        view = nil
-        presenter = nil
         networkService = nil
-        router = nil
-        coreDataManager = nil
         try super.tearDownWithError()
     }
 
@@ -79,9 +60,8 @@ class JournalPresenterTests: XCTestCase {
                               publishedAt: "01-01-01",
                               imageData: Data())
         journal.articles?.append(article)
-        view = MockView()
+        
         networkService = MockNetworService(journal: journal)
-        presenter = JournalViewPresenter(view: view, router: router, networkService: networkService, coreDataManager: coreDataManager)
         var catchJournal: Journal?
         
         networkService.getJournal(url: "") { result in
@@ -96,6 +76,7 @@ class JournalPresenterTests: XCTestCase {
         XCTAssertNotEqual(catchJournal?.articles?.count, 0)
         XCTAssertEqual(journal.articles?.count, catchJournal?.articles?.count)
         XCTAssertEqual(journal.articles?.first?.author, catchJournal?.articles?.first?.author)
+        XCTAssertNotNil(catchJournal)
     }
     
     func testGetFailure() {
@@ -108,9 +89,7 @@ class JournalPresenterTests: XCTestCase {
                               publishedAt: "01-01-01",
                               imageData: Data())
         journal.articles?.append(article)
-        view = MockView()
         networkService = MockNetworService()
-        presenter = JournalViewPresenter(view: view, router: router, networkService: networkService, coreDataManager: coreDataManager)
         
         var catchError: Error?
         networkService.getJournal(url: "") { result in
@@ -123,5 +102,33 @@ class JournalPresenterTests: XCTestCase {
             }
         }
         XCTAssertNotNil(catchError)
+    }
+    
+    func testSuccesGetImagesForArticles() {
+        let journal = Journal()
+        networkService = MockNetworService(journal: journal)
+        let firstArticle = Article(author: "Bar",
+                              title: "Fire",
+                              description: "Text",
+                              url: "someUrl",
+                              urlToImage: "urlToImage",
+                              publishedAt: "01-01-01",
+                              imageData: nil)
+        let secondArticle = Article(author: "second",
+                                    title: "SecondFire",
+                                    description: "SecondText",
+                                    url: "SecondsomeUrl",
+                                    urlToImage: "SecondurlToImage",
+                                    publishedAt: "02-02-02",
+                                    imageData: nil)
+        let articles = [firstArticle, secondArticle]
+        
+        var catchImagesData: [String: Data]?
+        
+        networkService.getImagesForArticles(articles: articles) { imagesData in
+            catchImagesData = imagesData
+        }
+        XCTAssertNotNil(catchImagesData)
+        XCTAssertEqual(catchImagesData?.first?.value, Data())
     }
 }

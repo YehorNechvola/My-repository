@@ -68,10 +68,9 @@ extension FullArticleViewController: FullArticleViewProtocol {
     func showFullArticle() {
         articleWebViev.navigationDelegate = self
         articleWebViev.backgroundColor = .clear
-        guard let stringUrl = presenter.urlToArticle else { return }
-        guard let urlToArticle = URL(string: stringUrl) else { return }
-        let request = URLRequest(url: urlToArticle)
-        articleWebViev.load(request)
+        presenter.createRequest { [weak self] request in
+            self?.articleWebViev.load(request)
+        }
     }
 }
 
