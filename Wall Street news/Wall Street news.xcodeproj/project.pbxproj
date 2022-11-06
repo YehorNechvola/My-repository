@@ -21,6 +21,7 @@
 		746A5280289E76B700957602 /* ArticleModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A527E289E76B700957602 /* ArticleModel+CoreDataClass.swift */; };
 		746A5281289E76B700957602 /* ArticleModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A527F289E76B700957602 /* ArticleModel+CoreDataProperties.swift */; };
 		746EDF7B2887EF84001CCA00 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746EDF7A2887EF84001CCA00 /* Router.swift */; };
+		7485C9592912784200BC4A1C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485C9582912784200BC4A1C /* UIImage+Extension.swift */; };
 		74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74872E672881586F00D07ECB /* AssemblyBuilder.swift */; };
 		74AB4AE5290DC37E00CA96A9 /* MockNetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B802F828CFB2080058298E /* MockNetworkServiceTests.swift */; };
 		74AB4AE6290DC38200CA96A9 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AB4AE1290D36BD00CA96A9 /* CoreDataManagerTests.swift */; };
@@ -71,6 +72,7 @@
 		746A527E289E76B700957602 /* ArticleModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		746A527F289E76B700957602 /* ArticleModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		746EDF7A2887EF84001CCA00 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7485C9582912784200BC4A1C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		74872E672881586F00D07ECB /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		74AB4AE1290D36BD00CA96A9 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		74B802F628CFB2080058298E /* WallStreetNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallStreetNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +281,7 @@
 				74CF50D5289533E00025EAE8 /* SceneDelegate+Extension.swift */,
 				74BC319E28C5FA810057D532 /* Extension+UIVIewController.swift */,
 				7407C5B428FAA660003A3816 /* ViewController+Extension.swift */,
+				7485C9582912784200BC4A1C /* UIImage+Extension.swift */,
 			);
 			path = ExtensionsHelpers;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				7407C5B528FAA660003A3816 /* ViewController+Extension.swift in Sources */,
 				746EDF7B2887EF84001CCA00 /* Router.swift in Sources */,
 				74FA969A288055770065F7EB /* AppDelegate.swift in Sources */,
+				7485C9592912784200BC4A1C /* UIImage+Extension.swift in Sources */,
 				74872E682881586F00D07ECB /* AssemblyBuilder.swift in Sources */,
 				74FA969C288055770065F7EB /* SceneDelegate.swift in Sources */,
 				742C42CD28807D86001C4FDA /* Article.swift in Sources */,

@@ -61,7 +61,9 @@ class ArticleTableViewCell: UITableViewCell {
     func setup(imageData: Data?) {
         guard let imageData = imageData else { return }
         let image = UIImage(data: imageData)
-        articleImageView.image = image
+        if let compressedImageData = image?.jpeg(.lowest) {
+            articleImageView.image = UIImage(data: compressedImageData)
+        }
     }
     
     private func setButtonStateByTap() {
